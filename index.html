@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,227 +12,78 @@
 <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Amiri:wght@400;700&family=Noto+Sans+Malayalam:wght@400;500;700&display=swap" rel="stylesheet">
 
 <style>
-:root {
-  --green:#117657;
-  --dark:#104b3a;
-  --mint:#eaf8ef;
-  --bg:#f7faf7;
-  --text:#193d32;
-  --muted:#718078;
-  --border:#e3ece5;
-}
+:root{--green:#117657;--dark:#104b3a;--mint:#eaf8ef;--bg:#f7faf7;--text:#193d32;--muted:#718078;--border:#e3ece5}
 *{box-sizing:border-box}
 body{margin:0;background:var(--bg);color:var(--text);font-family:'Nunito',sans-serif}
 button,input,textarea,select{font:inherit}
+button,a{cursor:pointer}
 button:focus-visible,a:focus-visible{outline:3px solid #efc65b;outline-offset:3px}
-a{text-decoration:none}
-button{cursor:pointer}
-img{max-width:100%}
-.app-header{
-  height:76px;background:#fff;border-bottom:1px solid var(--border);
-  display:flex;align-items:center;justify-content:space-between;
-  padding:0 24px;position:sticky;top:0;z-index:100
-}
+a{text-decoration:none;color:inherit}
+.app-header{height:76px;background:white;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;padding:0 24px;position:sticky;top:0;z-index:100}
 .brand{display:flex;align-items:center;gap:12px;color:var(--green)}
 .brand-logo{width:46px;height:46px;border-radius:15px;background:var(--mint);display:grid;place-items:center;font-size:27px}
-.brand h1{font-size:24px;font-weight:900;margin:0}
-.brand small{font-size:11px;letter-spacing:1px}
+.brand h1{font-size:24px;font-weight:900;margin:0}.brand small{font-size:11px;letter-spacing:1px}
 .header-right{display:flex;align-items:center;gap:12px}
-.header-right select,.header-btn{background:#fff;border:1px solid var(--border);border-radius:11px;padding:9px 12px;color:var(--text)}
+.header-right select,.header-btn{background:white;border:1px solid var(--border);border-radius:11px;padding:9px 12px;color:var(--text)}
 .student{display:flex;align-items:center;gap:9px;padding-left:14px;border-left:1px solid var(--border)}
 .student-avatar{width:40px;height:40px;border-radius:50%;background:#d9f3e4;display:grid;place-items:center;font-size:25px}
-.student strong{display:block;font-size:14px}
-.student small{color:var(--green)}
-.menu-toggle{display:none}
+.student strong{display:block;font-size:14px}.student small{color:var(--green)}.menu-toggle{display:none}
 .layout{display:grid;grid-template-columns:230px minmax(0,1fr);min-height:calc(100vh - 76px)}
-.sidebar{background:#fff;border-right:1px solid var(--border);padding:16px 13px;display:flex;flex-direction:column}
-.nav-item{
-  width:100%;display:flex;align-items:center;gap:13px;text-align:left;
-  background:transparent;border:0;padding:12px 13px;border-radius:11px;
-  margin-bottom:4px;color:#35574b;font-weight:800
-}
-.nav-item i{font-size:19px;width:24px}
-.nav-item:hover{background:#f0faf3}
-.nav-item.active{background:var(--green);color:white}
-.sidebar-bottom{border-top:1px solid var(--border);padding-top:15px;margin-top:15px}
-.sidebar-bottom p{font-size:12px;font-weight:900}
+.sidebar{background:white;border-right:1px solid var(--border);padding:16px 13px;display:flex;flex-direction:column}
+.nav-item{width:100%;display:flex;align-items:center;gap:13px;text-align:left;background:transparent;border:0;padding:12px 13px;border-radius:11px;margin-bottom:4px;color:#35574b;font-weight:800}
+.nav-item i{font-size:19px;width:24px}.nav-item:hover{background:#f0faf3}.nav-item.active{background:var(--green);color:white}
+.sidebar-bottom{border-top:1px solid var(--border);padding-top:15px;margin-top:15px}.sidebar-bottom p{font-size:12px;font-weight:900}
 .language-option{width:100%;padding:8px 10px;border:1px solid var(--border);border-radius:9px;background:white;text-align:left;margin:4px 0}
 .language-option.active{background:var(--mint);border-color:#83c9a0}
-.quote{text-align:center;margin-top:auto;padding:20px 8px 4px;color:#648e7b;font-size:13px}
-.quote i{font-size:37px;display:block;margin-bottom:8px}
-main{padding:20px;min-width:0}
-.page{display:none;max-width:1600px;margin:auto}
-.page.active{display:block}
+.quote{text-align:center;margin-top:auto;padding:20px 8px 4px;color:#648e7b;font-size:13px}.quote i{font-size:37px;display:block;margin-bottom:8px}
+main{padding:20px;min-width:0}.page{display:none;max-width:1600px;margin:auto}.page.active{display:block}
 .dashboard-layout{display:grid;grid-template-columns:minmax(0,1fr) 290px;gap:20px}
-.welcome{
-  display:grid;grid-template-columns:145px minmax(0,1fr) 145px;
-  align-items:center;min-height:220px;overflow:hidden;
-  border-radius:20px;background:linear-gradient(120deg,#c9f4ee,#e6fbff,#dff6dd);
-  border:1px solid #d5eee2;text-align:center;padding:16px
-}
-.welcome-person{font-size:95px;line-height:1}
-.welcome h2{font-size:clamp(27px,3vw,39px);font-weight:900;margin:5px 0}
-.welcome .arabic{font:700 25px 'Amiri',serif}
-.welcome p{margin:4px 0;font-weight:700}
-.section-title{display:flex;align-items:center;justify-content:space-between;gap:10px;margin:23px 2px 13px}
-.section-title h2{font-size:20px;font-weight:900;margin:0}
-.section-title h2 i{color:var(--green);margin-right:8px}
-.section-title a{color:var(--green);font-size:13px;font-weight:900}
+.welcome{display:grid;grid-template-columns:100px minmax(0,1fr) 100px;align-items:center;min-height:210px;overflow:hidden;border-radius:20px;background:linear-gradient(120deg,#c9f4ee,#e6fbff,#dff6dd);border:1px solid #d5eee2;text-align:center;padding:16px}
+.welcome-person{font-size:75px;line-height:1}.welcome h2{font-size:clamp(27px,3vw,39px);font-weight:900;margin:5px 0}.welcome .arabic{font:700 25px 'Amiri',serif}.welcome p{margin:4px 0;font-weight:700}
+.section-title{display:flex;align-items:center;justify-content:space-between;gap:10px;margin:23px 2px 13px}.section-title h2{font-size:20px;font-weight:900;margin:0}.section-title h2 i{color:var(--green);margin-right:8px}
 .learning-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
-.learning-card{
-  min-width:0;display:block;text-align:left;color:var(--text);
-  border:1px solid transparent;border-radius:16px;padding:14px;
-  transition:transform .2s,box-shadow .2s
-}
+.learning-card{min-width:0;display:block;text-align:left;color:var(--text);border:1px solid transparent;border-radius:16px;padding:14px;transition:transform .2s,box-shadow .2s}
 .learning-card:hover{transform:translateY(-3px);box-shadow:0 8px 20px #1b543212}
-.card-mint{background:#d0f6df;border-color:#a6e9bd}
-.card-yellow{background:#fff0b8;border-color:#f7e29b}
-.card-purple{background:#e9ddff;border-color:#d8c6ff}
-.card-pink{background:#ffe1df;border-color:#ffc9c5}
-.card-blue{background:#d9efff;border-color:#bde3ff}
-.card-green{background:#d7f6dc;border-color:#b8eac2}
-.card-top{display:flex;align-items:center;gap:12px}
-.card-icon{width:75px;height:75px;flex-shrink:0;border-radius:50%;background:#ffffff95;display:grid;place-items:center;font-size:43px}
-.card-copy{min-width:0}
-.card-copy h3{font-size:15px;font-weight:900;margin:0 0 4px}
-.card-copy p{font-size:12px;margin:0;line-height:1.5}
-.card-progress{margin-top:14px;font-size:12px;font-weight:900}
-.progress-line{height:7px;border-radius:20px;background:#315c4320;margin-top:5px;overflow:hidden}
-.progress-line span{height:100%;display:block;background:var(--green);border-radius:20px;transition:width .3s}
-.recent-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
-.recent-card{padding:7px;background:#fff;border:1px solid var(--border);border-radius:13px;min-width:0}
-.recent-card img{width:100%;height:85px;object-fit:cover;border-radius:9px}
-.recent-card h3{font-size:13px;font-weight:900;margin:9px 3px 3px}
-.recent-card p{font-size:11px;color:var(--muted);margin:0 3px 7px}
+.card-mint{background:#d0f6df;border-color:#a6e9bd}.card-yellow{background:#fff0b8;border-color:#f7e29b}.card-purple{background:#e9ddff;border-color:#d8c6ff}.card-pink{background:#ffe1df;border-color:#ffc9c5}.card-blue{background:#d9efff;border-color:#bde3ff}.card-green{background:#d7f6dc;border-color:#b8eac2}
+.card-top{display:flex;align-items:center;gap:12px}.card-icon{width:65px;height:65px;flex-shrink:0;border-radius:50%;background:#ffffff95;display:grid;place-items:center;font-size:37px}
+.card-copy h3{font-size:15px;font-weight:900;margin:0 0 4px}.card-copy p{font-size:12px;margin:0;line-height:1.5}
+.card-progress{margin-top:14px;font-size:12px;font-weight:900}.progress-line{height:7px;border-radius:20px;background:#315c4320;margin-top:5px;overflow:hidden}.progress-line span{height:100%;display:block;background:var(--green);border-radius:20px;transition:width .3s}
+.recent-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}.recent-card{padding:7px;background:white;border:1px solid var(--border);border-radius:13px;min-width:0}
+.recent-card img{width:100%;height:85px;object-fit:cover;border-radius:9px}.recent-card h3{font-size:13px;font-weight:900;margin:9px 3px 3px}.recent-card p{font-size:11px;color:var(--muted);margin:0 3px 7px}
 .small-btn{width:100%;border:0;border-radius:8px;background:var(--green);color:white;padding:8px 5px;font-size:12px;font-weight:900}
-.panel{background:#fff;border:1px solid var(--border);border-radius:15px;padding:16px;margin-bottom:14px}
-.panel-heading{display:flex;align-items:center;gap:10px;margin-bottom:12px}
-.panel-heading i{font-size:25px;color:var(--green)}
-.panel-heading h3{font-size:16px;font-weight:900;margin:0}
-.goal-bar{height:9px;border-radius:20px;background:#e7efea;overflow:hidden;margin:10px 0}
-.goal-bar span{display:block;height:100%;background:#23b47b;border-radius:20px}
-.daily-dua{text-align:center;background:linear-gradient(135deg,#fffef8,#f0faf4)}
-.dua-arabic{font:700 31px 'Amiri',serif;direction:rtl;margin:14px 0;color:#194b3b}
-.dua-meaning{font-size:13px;color:var(--muted)}
-.play-btn{border:0;background:var(--green);color:#fff;width:40px;height:40px;border-radius:50%;font-size:18px}
+.panel,.content-box{background:white;border:1px solid var(--border);border-radius:15px;padding:16px;margin-bottom:14px}
+.panel-heading{display:flex;align-items:center;gap:10px;margin-bottom:12px}.panel-heading i{font-size:25px;color:var(--green)}.panel-heading h3{font-size:16px;font-weight:900;margin:0}
+.goal-bar{height:9px;border-radius:20px;background:#e7efea;overflow:hidden;margin:10px 0}.goal-bar span{display:block;height:100%;background:#23b47b;border-radius:20px}
+.daily-dua{text-align:center;background:linear-gradient(135deg,#fffef8,#f0faf4)}.dua-arabic{font:700 31px 'Amiri',serif;direction:rtl;margin:14px 0;color:#194b3b}.dua-meaning{font-size:13px;color:var(--muted)}
 .quick-link{width:100%;display:flex;align-items:center;gap:11px;background:white;border:0;padding:11px 0;color:var(--text);text-align:left;font-size:13px;font-weight:800}
-.quick-link i:first-child{color:var(--green);font-size:18px;width:23px}
-.quick-link i:last-child{margin-left:auto}
-.encourage{background:linear-gradient(145deg,#d6f5ed,#f1fff2);border-radius:15px;text-align:center;padding:20px 10px}
-.encourage .kids{font-size:67px}
-.encourage h3{font-size:19px;font-weight:900}
-.encourage p{font-size:13px;color:var(--muted);margin:0}
-.page-heading{margin-bottom:20px}
-.page-heading h2{font-size:clamp(24px,3vw,32px);font-weight:900;margin:0 0 6px}
-.page-heading p{color:var(--muted);margin:0}
-.content-box{background:white;border:1px solid var(--border);border-radius:18px;padding:22px}
-.letter-grid{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:10px}
-.letter-tile{font:700 34px 'Amiri',serif;border:1px solid #d7eadc;border-radius:12px;background:#f0faf3;color:var(--green);padding:12px 2px}
-.letter-tile:hover{background:#d9f6e4}
-.lesson-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:13px}
-.lesson-row{display:flex;align-items:center;gap:12px;border:1px solid var(--border);border-radius:13px;padding:13px;background:#fff}
-.lesson-row .emoji{font-size:32px;flex-shrink:0}
-.lesson-row h3{font-size:15px;font-weight:900;margin:0}
-.lesson-row p{font-size:12px;color:var(--muted);margin:4px 0 0}
-.lesson-row button{margin-left:auto;border:0;border-radius:9px;padding:9px 12px;background:var(--mint);color:var(--green);font-weight:900}
-.story-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
-.story-card{border:1px solid var(--border);background:white;border-radius:17px;overflow:hidden;display:flex;flex-direction:column;min-width:0;transition:transform .2s,box-shadow .2s}
-.story-card:hover{transform:translateY(-4px);box-shadow:0 10px 25px #123b2914}
-.story-cover{width:100%;height:190px;object-fit:cover;background:#e5f5e9}
-.story-body{padding:15px;display:flex;flex-direction:column;flex:1}
-.story-tag{font-size:11px;font-weight:900;color:var(--green);background:var(--mint);border-radius:30px;padding:5px 9px;align-self:flex-start}
-.story-body h3{font-size:18px;font-weight:900;margin:10px 0 6px}
-.story-body p{font-size:13px;color:var(--muted);line-height:1.65}
-.story-body button{margin-top:auto}
-.story-hero{display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:center;margin-bottom:22px;background:#e7f7ec;border-radius:18px;overflow:hidden}
-.story-hero img{width:100%;height:280px;object-fit:cover}
-.story-hero-copy{padding:24px}
-.story-hero-copy h2{font-size:clamp(25px,3vw,35px);font-weight:900}
-.story-hero-copy p{color:#587365;line-height:1.7}
-.story-reading{max-width:850px;margin:auto}
-.story-reading img{width:100%;max-height:390px;object-fit:cover;border-radius:15px;margin-bottom:20px}
-.story-reading h2{font-weight:900}
-.story-reading p{font-size:16px;line-height:1.9}
-.story-reading .lesson-point{background:var(--mint);border-radius:13px;padding:16px;margin:20px 0}
-.quiz-option{display:block;width:100%;text-align:left;padding:13px;margin:9px 0;border:1px solid var(--border);border-radius:11px;background:white}
-.quiz-option:hover{background:var(--mint)}
-.quiz-option.correct{background:#d8f7e3;border-color:#49b77b}
-.quiz-option.wrong{background:#fff0ec;border-color:#e4a197}
+.quick-link i:first-child{color:var(--green);font-size:18px;width:23px}.quick-link i:last-child{margin-left:auto}
+.encourage{background:linear-gradient(145deg,#d6f5ed,#f1fff2);border-radius:15px;text-align:center;padding:20px 10px}.encourage .kids{font-size:67px}.encourage h3{font-size:19px;font-weight:900}.encourage p{font-size:13px;color:var(--muted);margin:0}
+.page-heading{margin-bottom:20px}.page-heading h2{font-size:clamp(24px,3vw,32px);font-weight:900;margin:0 0 6px}.page-heading p{color:var(--muted);margin:0}
+.letter-grid{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:10px}.letter-tile{font:700 34px 'Amiri',serif;border:1px solid #d7eadc;border-radius:12px;background:#f0faf3;color:var(--green);padding:12px 2px}.letter-tile:hover{background:#d9f6e4}
+.lesson-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:13px}.lesson-row{display:flex;align-items:center;gap:12px;border:1px solid var(--border);border-radius:13px;padding:13px;background:white;min-width:0}
+.lesson-row .emoji{font-size:32px;flex-shrink:0}.lesson-row h3{font-size:15px;font-weight:900;margin:0}.lesson-row p{font-size:12px;color:var(--muted);margin:4px 0 0}.lesson-row button{margin-left:auto;border:0;border-radius:9px;padding:9px 12px;background:var(--mint);color:var(--green);font-weight:900;flex-shrink:0}
+.story-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}.story-card{border:1px solid var(--border);background:white;border-radius:17px;overflow:hidden;display:flex;flex-direction:column;min-width:0;transition:transform .2s,box-shadow .2s}.story-card:hover{transform:translateY(-4px);box-shadow:0 10px 25px #123b2914}
+.story-cover{width:100%;height:170px;object-fit:cover;background:#e5f5e9}.story-body{padding:15px;display:flex;flex-direction:column;flex:1}.story-tag{font-size:11px;font-weight:900;color:var(--green);background:var(--mint);border-radius:30px;padding:5px 9px;align-self:flex-start}
+.story-body h3{font-size:18px;font-weight:900;margin:10px 0 6px}.story-body p{font-size:13px;color:var(--muted);line-height:1.65}.story-body button{margin-top:auto}
+.story-hero{display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:center;margin-bottom:22px;background:#e7f7ec;border-radius:18px;overflow:hidden}.story-hero img{width:100%;height:280px;object-fit:cover}.story-hero-copy{padding:24px}
+.story-reading{max-width:850px;margin:auto}.story-reading img{width:100%;max-height:390px;object-fit:cover;border-radius:15px;margin-bottom:20px}.story-reading h2{font-weight:900}.story-reading p{font-size:16px;line-height:1.9}.lesson-point{background:var(--mint);border-radius:13px;padding:16px;margin:20px 0}
+.quiz-option{display:block;width:100%;text-align:left;padding:13px;margin:9px 0;border:1px solid var(--border);border-radius:11px;background:white}.quiz-option:hover{background:var(--mint)}.quiz-option.correct{background:#d8f7e3;border-color:#49b77b}.quiz-option.wrong{background:#fff0ec;border-color:#e4a197}
 footer{text-align:center;color:#82938a;font-size:12px;padding:25px 5px}
-.modal-content{border:0;border-radius:18px;overflow:hidden}
-.modal-header{background:var(--mint)}
-.modal-title{font-weight:900}
-.modal-letter{font:700 95px 'Amiri',serif;text-align:center;color:var(--green)}
-.modal-arabic{font:700 34px 'Amiri',serif;text-align:center;direction:rtl;line-height:1.8}
-.modal-info{padding:12px;background:#f2faf4;border-radius:11px;margin:10px 0}
-.modal-info small{display:block;color:var(--muted)}
-.modal-info strong{font-weight:800}
+.modal-content{border:0;border-radius:18px;overflow:hidden}.modal-header{background:var(--mint)}.modal-title{font-weight:900}.modal-letter{font:700 95px 'Amiri',serif;text-align:center;color:var(--green)}.modal-arabic{font:700 29px 'Amiri',serif;text-align:center;direction:rtl;line-height:2.1;white-space:normal}.modal-info{padding:12px;background:#f2faf4;border-radius:11px;margin:10px 0}.modal-info small{display:block;color:var(--muted)}.modal-info strong{font-weight:800}
+.ayah-row{padding:14px;border:1px solid var(--border);border-radius:12px;margin:10px 0}.ayah-text{font:26px/2 'Amiri',serif;text-align:right;direction:rtl}.ayah-actions{display:flex;justify-content:space-between;align-items:center;gap:8px;margin-top:8px}
 .mobile-bottom{display:none}
-@media(max-width:1200px){
- .dashboard-layout{grid-template-columns:1fr}
- .right-column{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
- .panel{margin-bottom:0}
- .encourage{display:none}
- .story-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
-}
+@media(max-width:1200px){.dashboard-layout{grid-template-columns:1fr}.right-column{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.panel{margin-bottom:0}.encourage{display:none}.story-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:800px){
- .app-header{height:68px;padding:0 12px}
- .brand-logo{width:40px;height:40px;font-size:23px}
- .brand h1{font-size:19px}
- .brand small{display:none}
- .menu-toggle{display:inline-block}
- .student .student-info{display:none}
- .student{padding-left:6px}
- .layout{display:block;min-height:calc(100vh - 68px)}
- .sidebar{display:none;position:fixed;top:68px;left:0;bottom:0;width:270px;z-index:99;overflow-y:auto;box-shadow:10px 0 25px #143f2c20}
- .sidebar.open{display:flex}
- main{padding:12px;padding-bottom:82px}
- .welcome{min-height:175px;grid-template-columns:60px minmax(0,1fr) 60px;padding:12px 5px}
- .welcome-person{font-size:48px}
- .welcome .arabic{font-size:19px}
- .welcome h2{font-size:25px}
- .welcome p{font-size:12px}
- .learning-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}
- .learning-card{padding:11px}
- .card-top{display:block}
- .card-icon{width:55px;height:55px;font-size:32px;margin-bottom:8px}
- .card-copy h3{font-size:14px}
- .card-copy p{font-size:11px}
- .recent-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
- .right-column{grid-template-columns:1fr}
- .panel{padding:14px}
- .letter-grid{grid-template-columns:repeat(4,minmax(0,1fr));gap:8px}
- .lesson-grid{grid-template-columns:1fr}
- .story-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
- .story-cover{height:135px}
- .story-body{padding:11px}
- .story-body h3{font-size:15px}
- .story-body p{font-size:12px}
- .story-hero{grid-template-columns:1fr}
- .story-hero img{height:200px}
- .story-hero-copy{padding:17px}
- .content-box{padding:15px}
- .mobile-bottom{
-   display:grid;grid-template-columns:repeat(4,1fr);position:fixed;bottom:0;left:0;right:0;
-   z-index:98;background:white;border-top:1px solid var(--border);padding:7px 5px calc(7px + env(safe-area-inset-bottom))
- }
- .mobile-bottom button{border:0;background:white;color:#648073;font-size:10px;font-weight:800;display:grid;justify-items:center;gap:2px}
- .mobile-bottom i{font-size:20px}
- .mobile-bottom button.active{color:var(--green)}
+.app-header{height:68px;padding:0 12px}.brand-logo{width:40px;height:40px;font-size:23px}.brand h1{font-size:19px}.brand small{display:none}.menu-toggle{display:inline-block}.student .student-info{display:none}.student{padding-left:6px}
+.layout{display:block;min-height:calc(100vh - 68px)}.sidebar{display:none;position:fixed;top:68px;left:0;bottom:0;width:270px;z-index:99;overflow-y:auto;box-shadow:10px 0 25px #143f2c20}.sidebar.open{display:flex}
+main{padding:12px;padding-bottom:82px}.welcome{min-height:175px;grid-template-columns:50px minmax(0,1fr) 50px;padding:12px 5px}.welcome-person{font-size:42px}.welcome .arabic{font-size:19px}.welcome h2{font-size:24px}.welcome p{font-size:12px}
+.learning-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}.learning-card{padding:11px}.card-top{display:block}.card-icon{width:55px;height:55px;font-size:32px;margin-bottom:8px}.card-copy h3{font-size:14px}.card-copy p{font-size:11px}
+.recent-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.right-column{grid-template-columns:1fr}.panel{padding:14px}.letter-grid{grid-template-columns:repeat(4,minmax(0,1fr));gap:8px}.lesson-grid{grid-template-columns:1fr}.story-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.story-cover{height:135px}.story-body{padding:11px}.story-body h3{font-size:15px}.story-body p{font-size:12px}
+.story-hero{grid-template-columns:1fr}.story-hero img{height:200px}.story-hero-copy{padding:17px}.content-box{padding:15px}
+.mobile-bottom{display:grid;grid-template-columns:repeat(4,1fr);position:fixed;bottom:0;left:0;right:0;z-index:98;background:white;border-top:1px solid var(--border);padding:7px 5px calc(7px + env(safe-area-inset-bottom))}
+.mobile-bottom button{border:0;background:white;color:#648073;font-size:10px;font-weight:800;display:grid;justify-items:center;gap:2px}.mobile-bottom i{font-size:20px}.mobile-bottom button.active{color:var(--green)}
 }
-@media(max-width:420px){
- .header-right{gap:5px}
- .header-right select{font-size:11px;padding:8px 4px;max-width:105px}
- .brand{gap:7px}
- .brand h1{font-size:17px}
- .student-avatar{width:34px;height:34px;font-size:21px}
- .story-grid{grid-template-columns:1fr}
- .story-cover{height:190px}
- .welcome{grid-template-columns:42px minmax(0,1fr) 42px}
- .welcome-person{font-size:36px}
- .welcome .arabic{font-size:17px}
- .welcome h2{font-size:22px}
-}
+@media(max-width:420px){.header-right{gap:5px}.header-right select{font-size:11px;padding:8px 4px;max-width:95px}.brand{gap:7px}.brand h1{font-size:17px}.student-avatar{width:34px;height:34px;font-size:21px}.story-grid{grid-template-columns:1fr}.story-cover{height:190px}.welcome{grid-template-columns:35px minmax(0,1fr) 35px}.welcome-person{font-size:31px}.welcome .arabic{font-size:16px}.welcome h2{font-size:20px}}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
 </style>
 </head>
@@ -247,244 +99,194 @@ footer{text-align:center;color:#82938a;font-size:12px;padding:25px 5px}
   </div>
   <div class="header-right">
     <select id="languageSelect" aria-label="Language">
-      <option value="en">🌐 English</option>
-      <option value="ml">മലയാളം</option>
-      <option value="ar">العربية</option>
+      <option value="en">🌐 English</option><option value="ml">മലയാളം</option><option value="ar">العربية</option>
     </select>
     <div class="student">
       <div class="student-avatar">🧒</div>
-      <div class="student-info"><strong id="studentName">Ahmad</strong><small>Student</small></div>
-      <button class="header-btn" id="editName" aria-label="Edit name"><i class="bi bi-chevron-down"></i></button>
+      <div class="student-info"><strong id="studentName">Student</strong><small>Student</small></div>
+      <button class="header-btn" id="editName" aria-label="Edit student name"><i class="bi bi-pencil"></i></button>
     </div>
   </div>
 </header>
 
 <div class="layout">
-  <aside class="sidebar" id="sidebar">
-    <nav aria-label="Main navigation">
-      <button class="nav-item active" data-page="dashboard"><i class="bi bi-house-door-fill"></i><span data-i18n="dashboard">Dashboard</span></button>
-      <button class="nav-item" data-page="quran"><i class="bi bi-book-half"></i><span data-i18n="quran">Quran</span></button>
-      <button class="nav-item" data-page="letters"><i class="bi bi-alphabet"></i><span data-i18n="letters">Arabic Letters</span></button>
-      <button class="nav-item" data-page="duas"><i class="bi bi-heart-fill"></i><span data-i18n="duas">Duas</span></button>
-      <button class="nav-item" data-page="stories"><i class="bi bi-bookmark-heart-fill"></i><span data-i18n="stories">Islamic Stories</span></button>
-      <button class="nav-item" data-page="materials"><i class="bi bi-journal-bookmark-fill"></i><span data-i18n="materials">Study Materials</span></button>
-      <button class="nav-item" data-page="quiz"><i class="bi bi-patch-check-fill"></i><span data-i18n="quiz">Quizzes</span></button>
-      <button class="nav-item" data-page="progress"><i class="bi bi-bar-chart-fill"></i><span data-i18n="progress">My Progress</span></button>
-      <button class="nav-item" data-page="teacher"><i class="bi bi-person-workspace"></i><span data-i18n="teacher">Teacher Space</span></button>
-    </nav>
-    <div class="sidebar-bottom">
-      <p>LANGUAGE / ഭാഷ / اللغة</p>
-      <button class="language-option active" data-lang="en">🌐 English</button>
-      <button class="language-option" data-lang="ml">🌐 മലയാളം</button>
-      <button class="language-option" data-lang="ar">🌐 العربية</button>
-    </div>
-    <div class="quote"><i class="bi bi-moon-stars"></i>Small steps make big progress.<br>Learn with kindness 💚</div>
-  </aside>
+<aside class="sidebar" id="sidebar">
+  <nav aria-label="Main navigation">
+    <button class="nav-item active" data-page="dashboard"><i class="bi bi-house-door-fill"></i><span>Dashboard</span></button>
+    <button class="nav-item" data-page="quran"><i class="bi bi-book-half"></i><span>Quran</span></button>
+    <button class="nav-item" data-page="letters"><i class="bi bi-alphabet"></i><span>Arabic Letters</span></button>
+    <button class="nav-item" data-page="duas"><i class="bi bi-heart-fill"></i><span>Duas</span></button>
+    <button class="nav-item" data-page="stories"><i class="bi bi-bookmark-heart-fill"></i><span>Islamic Stories</span></button>
+    <button class="nav-item" data-page="materials"><i class="bi bi-journal-bookmark-fill"></i><span>Study Materials</span></button>
+    <button class="nav-item" data-page="quiz"><i class="bi bi-patch-check-fill"></i><span>Quizzes</span></button>
+    <button class="nav-item" data-page="progress"><i class="bi bi-bar-chart-fill"></i><span>My Progress</span></button>
+    <button class="nav-item" data-page="teacher"><i class="bi bi-person-workspace"></i><span>Teacher Space</span></button>
+  </nav>
+  <div class="sidebar-bottom">
+    <p>LANGUAGE / ഭാഷ / اللغة</p>
+    <button class="language-option active" data-lang="en">🌐 English</button>
+    <button class="language-option" data-lang="ml">🌐 മലയാളം</button>
+    <button class="language-option" data-lang="ar">🌐 العربية</button>
+  </div>
+  <div class="quote"><i class="bi bi-moon-stars"></i>Small steps make big progress.<br>Learn with kindness 💚</div>
+</aside>
 
-  <main>
-    <!-- HOME DASHBOARD -->
-    <section class="page active" id="page-dashboard">
-      <div class="dashboard-layout">
+<main>
+<section class="page active" id="page-dashboard">
+  <div class="dashboard-layout">
+    <div>
+      <div class="welcome">
+        <div class="welcome-person" aria-hidden="true">👦🏻</div>
         <div>
-          <div class="welcome">
-            <div class="welcome-person" aria-hidden="true">👦🏻</div>
-            <div>
-              <div class="arabic" lang="ar">بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ</div>
-              <p>Assalamu Alaikum,</p>
-              <h2 id="welcomeName">Ahmad!</h2>
-              <p>Let’s learn and grow together 💚</p>
-            </div>
-            <div class="welcome-person" aria-hidden="true">👧🏻</div>
-          </div>
-
-          <div class="section-title"><h2><i class="bi bi-journal-richtext"></i>My Learning Path</h2></div>
-          <div class="learning-grid">
-            <button class="learning-card card-mint" data-page="quran">
-              <div class="card-top"><div class="card-icon">📖</div><div class="card-copy"><h3>Quran</h3><p>Surahs and recitation</p></div></div>
-              <div class="card-progress"><span id="count-quran">0 lessons completed</span><div class="progress-line"><span id="bar-quran"></span></div></div>
-            </button>
-            <button class="learning-card card-yellow" data-page="letters">
-              <div class="card-top"><div class="card-icon">🔤</div><div class="card-copy"><h3>Arabic Letters</h3><p>Learn the alphabet</p></div></div>
-              <div class="card-progress"><span id="count-letters">0 / 28 letters</span><div class="progress-line"><span id="bar-letters"></span></div></div>
-            </button>
-            <button class="learning-card card-purple" data-page="duas">
-              <div class="card-top"><div class="card-icon">🤲</div><div class="card-copy"><h3>Duas</h3><p>Everyday supplications</p></div></div>
-              <div class="card-progress"><span id="count-duas">0 duas learned</span><div class="progress-line"><span id="bar-duas"></span></div></div>
-            </button>
-            <button class="learning-card card-pink" data-page="stories">
-              <div class="card-top"><div class="card-icon">🕌</div><div class="card-copy"><h3>Islamic Stories</h3><p>Stories and good manners</p></div></div>
-              <div class="card-progress"><span id="count-stories">Explore stories</span><div class="progress-line"><span id="bar-stories"></span></div></div>
-            </button>
-            <button class="learning-card card-blue" data-page="materials">
-              <div class="card-top"><div class="card-icon">📚</div><div class="card-copy"><h3>Study Materials</h3><p>Notes and revision</p></div></div>
-              <div class="card-progress"><span id="count-materials">Explore materials</span><div class="progress-line"><span id="bar-materials"></span></div></div>
-            </button>
-            <button class="learning-card card-green" data-page="quiz">
-              <div class="card-top"><div class="card-icon">💡</div><div class="card-copy"><h3>Fun Quizzes</h3><p>Test your knowledge</p></div></div>
-              <div class="card-progress"><span id="count-quiz">Try a quiz</span><div class="progress-line"><span id="bar-quiz"></span></div></div>
-            </button>
-          </div>
-
-          <div class="section-title"><h2><i class="bi bi-clock-history"></i>Continue Learning</h2></div>
-          <div class="recent-grid">
-            <article class="recent-card">
-              <img src="https://images.unsplash.com/photo-1609599006353-e629aaabfeae?auto=format&fit=crop&w=500&q=80" alt="Open Quran on a book stand" loading="lazy">
-              <h3>Quran Reading</h3><p>Beginner lessons</p><button class="small-btn" data-page="quran">Continue</button>
-            </article>
-            <article class="recent-card">
-              <img src="https://images.unsplash.com/photo-1519682337058-a94d519337bc?auto=format&fit=crop&w=500&q=80" alt="Books ready for learning" loading="lazy">
-              <h3>Arabic Practice</h3><p>Learn letters</p><button class="small-btn" data-page="letters">Practise</button>
-            </article>
-            <article class="recent-card">
-              <img src="https://images.unsplash.com/photo-1516627145497-ae6968895b74?auto=format&fit=crop&w=500&q=80" alt="Child learning and reading" loading="lazy">
-              <h3>Good Manners</h3><p>Islamic stories</p><button class="small-btn" data-page="stories">Explore</button>
-            </article>
-            <article class="recent-card">
-              <img src="https://images.unsplash.com/photo-1453738773917-9c3eff1db985?auto=format&fit=crop&w=500&q=80" alt="Books for studying" loading="lazy">
-              <h3>Revision</h3><p>Study materials</p><button class="small-btn" data-page="materials">Review</button>
-            </article>
-          </div>
+          <div class="arabic" lang="ar">بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ</div>
+          <p>Assalamu Alaikum,</p><h2 id="welcomeName">Student!</h2><p>Let’s learn and grow together 💚</p>
         </div>
-
-        <aside class="right-column">
-          <div class="panel">
-            <div class="panel-heading"><i class="bi bi-bullseye"></i><h3>Today's Goal</h3>⭐</div>
-            <p id="goalMessage" class="small">Complete 3 learning activities.</p>
-            <div class="d-flex justify-content-between small fw-bold"><span>Daily progress</span><span id="goalCount">0 / 3</span></div>
-            <div class="goal-bar"><span id="goalBar" style="width:0%"></span></div>
-            <button class="btn btn-success btn-sm w-100" data-page="letters">Start Learning</button>
-          </div>
-
-          <div class="panel daily-dua">
-            <div class="panel-heading text-start"><i class="bi bi-heart-fill"></i><h3>Daily Dua</h3></div>
-            <div class="dua-arabic" lang="ar">رَبِّ زِدْنِي عِلْمًا</div>
-            <p class="fw-bold small">Rabbi zidni ilma</p>
-            <p class="dua-meaning">My Lord, increase me in knowledge.</p>
-            <button class="play-btn" id="playDailyDua" aria-label="Listen to daily dua"><i class="bi bi-play-fill"></i></button>
-            <button class="btn btn-sm btn-outline-success ms-2" data-page="duas">Learn Dua</button>
-          </div>
-
-          <div class="panel">
-            <div class="panel-heading"><i class="bi bi-stars"></i><h3>Quick Links</h3></div>
-            <button class="quick-link" data-page="quran"><i class="bi bi-book-half"></i>Quran recitation<i class="bi bi-chevron-right"></i></button>
-            <button class="quick-link" data-page="letters"><i class="bi bi-volume-up"></i>Letter pronunciation<i class="bi bi-chevron-right"></i></button>
-            <button class="quick-link" data-page="stories"><i class="bi bi-bookmark-heart"></i>Read a story<i class="bi bi-chevron-right"></i></button>
-            <button class="quick-link" data-page="materials"><i class="bi bi-journal"></i>Study materials<i class="bi bi-chevron-right"></i></button>
-          </div>
-          <div class="encourage"><div class="kids">👦🏻 💚 👧🏻</div><h3>You Can Do It!</h3><p>Every lesson is a new achievement.</p></div>
-        </aside>
-      </div>
-    </section>
-
-    <!-- QURAN PAGE -->
-    <section class="page" id="page-quran">
-      <div class="page-heading"><h2>📖 Quran Learning</h2><p>Begin with short surahs. Read carefully and listen to recitation.</p></div>
-      <div class="content-box">
-        <div class="alert alert-success">بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ <br><small>Start with Bismillah and learn at your own pace.</small></div>
-        <div id="quranList" class="lesson-grid"></div>
-        <p class="small text-secondary mt-3">Internet access is needed for online Quran text and recitation. Learn correct pronunciation with a qualified teacher.</p>
-      </div>
-    </section>
-
-    <!-- ARABIC LETTERS PAGE -->
-    <section class="page" id="page-letters">
-      <div class="page-heading"><h2>🔤 Arabic Letters</h2><p>Tap a letter to learn its name and hear a pronunciation guide.</p></div>
-      <div class="content-box">
-        <div class="alert alert-info">Choose any letter. Use the sound button in its popup to practise.</div>
-        <div class="letter-grid" id="letterGrid"></div>
-      </div>
-    </section>
-
-    <!-- DUAS PAGE -->
-    <section class="page" id="page-duas">
-      <div class="page-heading"><h2>🤲 Daily Duas</h2><p>Learn short supplications for everyday life.</p></div>
-      <div class="content-box"><div class="lesson-grid" id="duaList"></div></div>
-    </section>
-
-    <!-- STORIES LANDING PAGE -->
-    <section class="page" id="page-stories">
-      <div class="page-heading">
-        <h2>🕌 Islamic Stories for Young Learners</h2>
-        <p>Explore meaningful stories and practise good manners every day.</p>
+        <div class="welcome-person" aria-hidden="true">👧🏻</div>
       </div>
 
-      <div class="story-hero">
-        <img src="https://images.unsplash.com/photo-1516627145497-ae6968895b74?auto=format&fit=crop&w=1000&q=85" alt="A child enjoying a learning activity">
-        <div class="story-hero-copy">
-          <span class="story-tag">NOOR STORY CORNER</span>
-          <h2>Learn Goodness Through Stories</h2>
-          <p>Read short lessons about honesty, kindness, gratitude and caring for others. Each story includes a simple takeaway to remember.</p>
-          <button class="btn btn-success" data-story="kindness">Read a Story <i class="bi bi-arrow-right"></i></button>
-        </div>
+      <div class="section-title"><h2><i class="bi bi-journal-richtext"></i>My Learning Path</h2></div>
+      <div class="learning-grid">
+        <button class="learning-card card-mint" data-page="quran"><div class="card-top"><div class="card-icon">📖</div><div class="card-copy"><h3>Quran</h3><p>Surahs and recitation</p></div></div><div class="card-progress"><span id="count-quran">0 surahs studied</span><div class="progress-line"><span id="bar-quran"></span></div></div></button>
+        <button class="learning-card card-yellow" data-page="letters"><div class="card-top"><div class="card-icon">🔤</div><div class="card-copy"><h3>Arabic Letters</h3><p>Learn the alphabet</p></div></div><div class="card-progress"><span id="count-letters">0 / 28 letters</span><div class="progress-line"><span id="bar-letters"></span></div></div></button>
+        <button class="learning-card card-purple" data-page="duas"><div class="card-top"><div class="card-icon">🤲</div><div class="card-copy"><h3>Duas</h3><p>Everyday supplications</p></div></div><div class="card-progress"><span id="count-duas">0 duas learned</span><div class="progress-line"><span id="bar-duas"></span></div></div></button>
+        <button class="learning-card card-pink" data-page="stories"><div class="card-top"><div class="card-icon">🕌</div><div class="card-copy"><h3>Islamic Stories</h3><p>Stories and good manners</p></div></div><div class="card-progress"><span id="count-stories">Explore stories</span><div class="progress-line"><span id="bar-stories"></span></div></div></button>
+        <button class="learning-card card-blue" data-page="materials"><div class="card-top"><div class="card-icon">📚</div><div class="card-copy"><h3>Study Materials</h3><p>Notes and revision</p></div></div><div class="card-progress"><span id="count-materials">Explore materials</span><div class="progress-line"><span id="bar-materials"></span></div></div></button>
+        <button class="learning-card card-green" data-page="quiz"><div class="card-top"><div class="card-icon">💡</div><div class="card-copy"><h3>Fun Quizzes</h3><p>Test your knowledge</p></div></div><div class="card-progress"><span id="count-quiz">Try a quiz</span><div class="progress-line"><span id="bar-quiz"></span></div></div></button>
       </div>
 
-      <div class="section-title"><h2>Choose Your Story</h2><span class="text-secondary small">Read · Reflect · Practise</span></div>
-      <div class="story-grid" id="storyGrid"></div>
-    </section>
-
-    <!-- SEPARATE STORY READING PAGE -->
-    <section class="page" id="page-story-reader">
-      <button class="btn btn-outline-success mb-3" id="backToStories"><i class="bi bi-arrow-left"></i> All Stories</button>
-      <article class="content-box story-reading" id="storyReader"></article>
-    </section>
-
-    <!-- STUDY MATERIALS -->
-    <section class="page" id="page-materials">
-      <div class="page-heading"><h2>📚 Study Materials</h2><p>Simple revision activities for independent learning.</p></div>
-      <div class="content-box"><div class="lesson-grid" id="materialsList"></div></div>
-    </section>
-
-    <!-- QUIZ -->
-    <section class="page" id="page-quiz">
-      <div class="page-heading"><h2>💡 Knowledge Quiz</h2><p>Think carefully and choose the answer. Mistakes help you learn.</p></div>
-      <div class="content-box">
-        <div id="quizArea"></div>
-        <button class="btn btn-success mt-3" id="nextQuiz">Next Question →</button>
-        <p id="quizFeedback" class="mt-3 fw-bold" aria-live="polite"></p>
+      <div class="section-title"><h2><i class="bi bi-clock-history"></i>Continue Learning</h2></div>
+      <div class="recent-grid">
+        <article class="recent-card"><img src="https://images.unsplash.com/photo-1609599006353-e629aaabfeae?auto=format&fit=crop&w=500&q=80" alt="Open Quran" loading="lazy"><h3>Quran Reading</h3><p>Beginner lessons</p><button class="small-btn" data-page="quran">Continue</button></article>
+        <article class="recent-card"><img src="https://images.unsplash.com/photo-1519682337058-a94d519337bc?auto=format&fit=crop&w=500&q=80" alt="Books" loading="lazy"><h3>Arabic Practice</h3><p>Learn letters</p><button class="small-btn" data-page="letters">Practise</button></article>
+        <article class="recent-card"><img src="https://images.unsplash.com/photo-1516627145497-ae6968895b74?auto=format&fit=crop&w=500&q=80" alt="Child learning" loading="lazy"><h3>Good Manners</h3><p>Islamic stories</p><button class="small-btn" data-page="stories">Explore</button></article>
+        <article class="recent-card"><img src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=500&q=80" alt="Student reading" loading="lazy"><h3>Study Notes</h3><p>Revise lessons</p><button class="small-btn" data-page="materials">Open</button></article>
       </div>
-    </section>
+    </div>
 
-    <!-- PROGRESS -->
-    <section class="page" id="page-progress">
-      <div class="page-heading"><h2>🌟 My Progress</h2><p>Celebrate the small steps you take.</p></div>
-      <div class="content-box">
-        <div class="row g-3" id="progressCards"></div>
-        <div class="alert alert-success mt-4">Keep going! A little learning every day can make a big difference.</div>
-        <button class="btn btn-outline-secondary btn-sm" id="resetProgress">Reset demo progress</button>
+    <aside class="right-column">
+      <div class="panel">
+        <div class="panel-heading"><i class="bi bi-trophy-fill"></i><h3>Daily Learning Goal</h3></div>
+        <div class="d-flex justify-content-between small"><span>Activities completed</span><strong id="goalCount">0 / 3</strong></div>
+        <div class="goal-bar"><span id="goalBar" style="width:0%"></span></div>
+        <p class="small text-secondary mb-0" id="goalMessage">Complete 3 learning activities to reach your demo goal.</p>
       </div>
-    </section>
-
-    <!-- TEACHER SPACE -->
-    <section class="page" id="page-teacher">
-      <div class="page-heading"><h2>👩‍🏫 Teacher Space</h2><p>Demo space for personal lesson notes.</p></div>
-      <div class="content-box">
-        <div class="alert alert-warning">This is a local demo, not a shared school portal. Notes are only stored in this browser.</div>
-        <label for="teacherNote" class="form-label fw-bold">Lesson notes</label>
-        <textarea id="teacherNote" class="form-control" rows="4" maxlength="1000" placeholder="Write a lesson note..."></textarea>
-        <button class="btn btn-success mt-3" id="saveNote">Save Note</button>
-        <div id="savedNotes" class="mt-4"></div>
+      <div class="panel daily-dua">
+        <div class="panel-heading justify-content-center"><i class="bi bi-heart-fill"></i><h3>Dua of the Day</h3></div>
+        <div class="dua-arabic" lang="ar">رَبِّ زِدْنِي عِلْمًا</div>
+        <p class="dua-meaning">“My Lord, increase me in knowledge.”</p>
+        <button class="btn btn-success btn-sm" id="playDailyDua"><i class="bi bi-volume-up"></i> Listen</button>
       </div>
-    </section>
+      <div class="panel">
+        <div class="panel-heading"><i class="bi bi-lightning-fill"></i><h3>Quick Links</h3></div>
+        <button class="quick-link" data-page="quran"><i class="bi bi-book"></i>Read the Quran<i class="bi bi-arrow-right"></i></button>
+        <button class="quick-link" data-page="duas"><i class="bi bi-heart"></i>Learn a Dua<i class="bi bi-arrow-right"></i></button>
+        <button class="quick-link" data-page="quiz"><i class="bi bi-patch-question"></i>Try a Quiz<i class="bi bi-arrow-right"></i></button>
+        <button class="quick-link" data-page="progress"><i class="bi bi-bar-chart"></i>View Progress<i class="bi bi-arrow-right"></i></button>
+      </div>
+      <div class="encourage"><div class="kids">🌟📚</div><h3>You can do it!</h3><p>Learn a little every day. Keep practising and be kind.</p></div>
+    </aside>
+  </div>
+</section>
 
-    <footer>© <span id="year"></span> Noor Academy · Learn with kindness, grow with knowledge 💚</footer>
-  </main>
+<section class="page" id="page-quran">
+  <div class="page-heading"><h2>📖 Quran Learning</h2><p>Explore all 114 surahs, read the Arabic text, and listen to complete surah recitation.</p></div>
+  <div class="content-box">
+    <div class="row g-2 align-items-center mb-3">
+      <div class="col-md-8"><input class="form-control" id="surahSearch" placeholder="Search surah by name or number..." aria-label="Search Quran surahs"></div>
+      <div class="col-md-4"><select id="surahSort" class="form-select"><option value="number">Order: Quran order</option><option value="name">Order: Name A–Z</option></select></div>
+    </div>
+    <div class="alert alert-success"><i class="bi bi-volume-up"></i> Open a surah and choose <strong>Play Full Surah</strong> to hear all its ayahs in sequence.</div>
+    <div id="quranLoading" class="text-secondary small mb-3">Loading all 114 surahs…</div>
+    <div id="quranList" class="lesson-grid"></div>
+    <p class="small text-secondary mt-3">Internet access is required for Quran text and recitation. Practise correct pronunciation with a qualified Quran teacher.</p>
+  </div>
+</section>
+
+<section class="page" id="page-letters">
+  <div class="page-heading"><h2>🔤 Arabic Letters</h2><p>Tap a letter to learn its name and hear a pronunciation guide.</p></div>
+  <div class="content-box"><div class="alert alert-info">Choose a letter, read its name, and practise its sound.</div><div class="letter-grid" id="letterGrid"></div></div>
+</section>
+
+<section class="page" id="page-duas">
+  <div class="page-heading"><h2>🤲 Daily Duas</h2><p>Learn short supplications for everyday life.</p></div>
+  <div class="content-box"><div class="lesson-grid" id="duaList"></div></div>
+</section>
+
+<section class="page" id="page-stories">
+  <div class="page-heading"><h2>🕌 Islamic Stories & Good Manners</h2><p>Read simple stories about kindness, honesty, patience, and gratitude.</p></div>
+  <div class="story-grid" id="storyGrid"></div>
+</section>
+
+<section class="page" id="page-story-reader">
+  <div class="page-heading"><button class="btn btn-outline-success mb-3" id="backToStories"><i class="bi bi-arrow-left"></i> All stories</button></div>
+  <div class="content-box story-reading" id="storyReader"></div>
+</section>
+
+<section class="page" id="page-materials">
+  <div class="page-heading"><h2>📚 Study Materials</h2><p>Short revision notes to help you study independently.</p></div>
+  <div class="content-box"><div class="lesson-grid" id="materialsList"></div></div>
+</section>
+
+<section class="page" id="page-quiz">
+  <div class="page-heading"><h2>💡 Fun Knowledge Quiz</h2><p>Choose an answer and learn from the explanation.</p></div>
+  <div class="content-box">
+    <div id="quizArea"></div><div id="quizFeedback" class="alert alert-light mt-3"></div>
+    <button class="btn btn-success mt-2" id="nextQuiz">Next Question <i class="bi bi-arrow-right"></i></button>
+  </div>
+</section>
+
+<section class="page" id="page-progress">
+  <div class="page-heading"><h2>📊 My Learning Progress</h2><p>Review the learning activities completed in this browser.</p></div>
+  <div class="row" id="progressCards"></div>
+  <div class="content-box"><h3 class="fw-bold fs-5">Your learning activity</h3><p class="text-secondary small">Progress is saved on this device. A backend is required for teacher/student accounts across devices.</p><button class="btn btn-outline-danger btn-sm" id="resetProgress">Reset learning progress</button></div>
+</section>
+
+<section class="page" id="page-teacher">
+  <div class="page-heading"><h2>👩‍🏫 Teacher Space</h2><p>Write a reminder, revision task, or lesson note for your own reference.</p></div>
+  <div class="content-box">
+    <div class="alert alert-info">This is a frontend demonstration. Notes are stored only in this browser, not shared with other students or teachers.</div>
+    <label for="teacherNote" class="form-label fw-bold">Add a learning note</label>
+    <textarea id="teacherNote" class="form-control mb-3" rows="4" maxlength="1000" placeholder="Write a revision note or reminder..."></textarea>
+    <button class="btn btn-success" id="saveNote"><i class="bi bi-save"></i> Save note</button>
+    <hr><h3 class="fs-5 fw-bold">Saved notes</h3><div id="savedNotes"></div>
+  </div>
+</section>
+
+<footer>© <span id="year"></span> Noor Academy · Learn with kindness 💚</footer>
+</main>
 </div>
 
-<nav class="mobile-bottom" aria-label="Mobile navigation">
+<div class="mobile-bottom">
   <button class="active" data-page="dashboard"><i class="bi bi-house-door"></i>Home</button>
   <button data-page="quran"><i class="bi bi-book"></i>Quran</button>
-  <button data-page="stories"><i class="bi bi-bookmark-heart"></i>Stories</button>
+  <button data-page="letters"><i class="bi bi-alphabet"></i>Letters</button>
   <button data-page="progress"><i class="bi bi-bar-chart"></i>Progress</button>
-</nav>
+</div>
 
-<!-- POPUP -->
-<div class="modal fade" id="lessonModal" tabindex="-1" aria-labelledby="modalTitle" aria-hidden="true">
+<!-- First-visit student name popup -->
+<div class="modal fade" id="studentNameModal" tabindex="-1" aria-labelledby="studentNameTitle" aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false">
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="modalTitle">Lesson</h5>
-        <button class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
+      <div class="modal-header"><h5 class="modal-title" id="studentNameTitle">Welcome to Noor Academy!</h5></div>
+      <form id="studentNameForm">
+        <div class="modal-body text-center p-4">
+          <div style="font-size:55px">🌙📚</div>
+          <p class="text-secondary">Let's personalise your learning dashboard.</p>
+          <label for="studentNameInput" class="form-label fw-bold">What is your name?</label>
+          <input id="studentNameInput" class="form-control form-control-lg text-center" maxlength="35" required autocomplete="given-name" placeholder="Enter your name">
+          <div class="form-text">Your name is saved in this browser.</div>
+        </div>
+        <div class="modal-footer border-0"><button type="submit" class="btn btn-success w-100">Start Learning <i class="bi bi-arrow-right"></i></button></div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- Reusable lesson modal -->
+<div class="modal fade" id="lessonModal" tabindex="-1" aria-labelledby="modalTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg">
+    <div class="modal-content">
+      <div class="modal-header"><h5 class="modal-title" id="modalTitle">Lesson</h5><button class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button></div>
       <div class="modal-body" id="modalBody"></div>
       <div class="modal-footer border-0">
         <button class="btn btn-outline-secondary" data-bs-dismiss="modal">Close</button>
@@ -499,85 +301,44 @@ footer{text-align:center;color:#82938a;font-size:12px;padding:25px 5px}
 const $ = (s, root=document) => root.querySelector(s);
 const $$ = (s, root=document) => [...root.querySelectorAll(s)];
 const KEY = "noorAcademyV2";
-const initial = {name:"Ahmad",language:"en",completed:[],quizCompleted:[],notes:[]};
+const initial = {name:"",language:"en",completed:[],quizCompleted:[],notes:[]};
 
 let state;
-try { state = {...initial,...JSON.parse(localStorage.getItem(KEY)||"{}")}; }
-catch { state = {...initial}; }
+try {
+  state = {...initial,...JSON.parse(localStorage.getItem(KEY)||"{}")};
+  if(!Array.isArray(state.completed))state.completed=[];
+  if(!Array.isArray(state.quizCompleted))state.quizCompleted=[];
+  if(!Array.isArray(state.notes))state.notes=[];
+} catch { state={...initial}; }
 
 function save(){try{localStorage.setItem(KEY,JSON.stringify(state));}catch(e){}}
 function done(id){return state.completed.includes(id);}
-function complete(id){
-  if(!done(id))state.completed.push(id);
-  save();renderProgress();
+function safe(value){return String(value).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));}
+function complete(id){if(!done(id))state.completed.push(id);save();renderProgress();}
+
+const lessonModal = new bootstrap.Modal($("#lessonModal"));
+const nameModal = new bootstrap.Modal($("#studentNameModal"));
+let activeLesson=null,quizIndex=0,answered={},audioPlayer=null,audioRun=0;
+let surahs=[];
+
+function updateName(){
+  const name=state.name||"Student";
+  $("#studentName").textContent=name;
+  $("#welcomeName").textContent=name+"!";
 }
-
-const letters=[
-["ا","Alif","Aa"],["ب","Ba","Ba"],["ت","Ta","Ta"],["ث","Tha","Tha"],
-["ج","Jim","Jim"],["ح","Ha","Ha"],["خ","Kha","Kha"],["د","Dal","Dal"],
-["ذ","Dhal","Dhal"],["ر","Ra","Ra"],["ز","Zay","Zay"],["س","Sin","Sin"],
-["ش","Shin","Shin"],["ص","Sad","Sad"],["ض","Dad","Dad"],["ط","Ta","Ta"],
-["ظ","Dha","Dha"],["ع","Ayn","Ayn"],["غ","Ghayn","Ghayn"],["ف","Fa","Fa"],
-["ق","Qaf","Qaf"],["ك","Kaf","Kaf"],["ل","Lam","Lam"],["م","Mim","Mim"],
-["ن","Nun","Nun"],["ه","Ha","Ha"],["و","Waw","Waw"],["ي","Ya","Ya"]
-];
-
-const duas=[
-{id:"dua-knowledge",title:"Dua for Knowledge",emoji:"📘",arabic:"رَبِّ زِدْنِي عِلْمًا",say:"Rabbi zidni ilma",meaning:"My Lord, increase me in knowledge.",ml:"എന്റെ രക്ഷിതാവേ, എനിക്ക് അറിവ് വർധിപ്പിച്ചുതരേണമേ."},
-{id:"dua-eating",title:"Before Eating",emoji:"🍽️",arabic:"بِسْمِ اللَّهِ",say:"Bismillah",meaning:"In the name of Allah.",ml:"അല്ലാഹുവിന്റെ നാമത്തിൽ."},
-{id:"dua-thanks",title:"Thanking Allah",emoji:"💚",arabic:"الْحَمْدُ لِلَّهِ",say:"Alhamdulillah",meaning:"All praise belongs to Allah.",ml:"എല്ലാ സ്തുതിയും അല്ലാഹുവിനാണ്."},
-{id:"dua-parents",title:"Dua for Parents",emoji:"👨‍👩‍👧",arabic:"رَبِّ ارْحَمْهُمَا كَمَا رَبَّيَانِي صَغِيرًا",say:"Rabbir hamhuma kama rabbayani saghira",meaning:"My Lord, have mercy on them as they raised me when I was small.",ml:"അവർ എന്നെ ചെറുപ്പത്തിൽ വളർത്തിയതുപോലെ അവരോട് കരുണ കാണിക്കേണമേ."},
-{id:"dua-forgiveness",title:"Seeking Forgiveness",emoji:"🌙",arabic:"أَسْتَغْفِرُ اللَّهَ",say:"Astaghfirullah",meaning:"I seek forgiveness from Allah.",ml:"ഞാൻ അല്ലാഹുവിനോട് പാപമോചനം തേടുന്നു."}
-];
-
-const stories=[
-{id:"kindness",title:"The Gift of Kindness",tag:"GOOD MANNERS",image:"https://images.unsplash.com/photo-1516627145497-ae6968895b74?auto=format&fit=crop&w=900&q=85",alt:"A child learning",summary:"Discover how small acts of kindness can brighten someone's day.",paragraphs:["One morning, a young student noticed a classmate sitting alone. The student smiled, greeted the classmate, and invited them to join a game.","Later, the student helped a younger child pick up some books. Nobody asked them to help. They simply wanted to do something good.","That evening, the student remembered that kindness does not need to be big or expensive. A friendly word, a helping hand, and a sincere smile can mean a lot."],lesson:"Try one act of kindness today: help someone, share what you can, or speak gently."},
-{id:"honesty",title:"Always Tell the Truth",tag:"HONESTY",image:"https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?auto=format&fit=crop&w=900&q=85",alt:"A young child",summary:"A simple lesson about honesty, courage, and trust.",paragraphs:["A student accidentally damaged a classroom pencil. At first, the student felt worried about admitting what happened.","After thinking carefully, the student told the teacher the truth and apologised. The teacher appreciated the honesty and helped the student learn to be more careful.","The student discovered that telling the truth can take courage, but honesty helps people trust one another."],lesson:"Tell the truth, admit mistakes, and try to make things right."},
-{id:"gratitude",title:"A Heart Full of Gratitude",tag:"GRATITUDE",image:"https://images.unsplash.com/photo-1476231682828-37e571bc172f?auto=format&fit=crop&w=900&q=85",alt:"Sunlight through green trees",summary:"Notice the blessings and good things around you.",paragraphs:["A young learner began each day by thinking about the good things in life: family, food, health, friendship, and the chance to learn.","When something was difficult, the learner tried to remain patient and remember the good things that were still present.","Over time, the learner became more thoughtful and appreciative, and began saying Alhamdulillah more often."],lesson:"Think of three blessings today and thank Allah for them."},
-{id:"cleanliness",title:"Keep Your Surroundings Clean",tag:"GOOD HABITS",image:"https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=900&q=85",alt:"A student learning at a desk",summary:"Learn why caring for your surroundings matters.",paragraphs:["After a study session, a student noticed papers and pencils scattered across the desk.","Instead of leaving the mess for someone else, the student put the books away, collected the papers, and cleaned the desk.","The study space looked welcoming again. The student realised that small, regular habits can make a big difference."],lesson:"Keep your books, room, classroom, and shared spaces tidy."},
-{id:"sharing",title:"The Joy of Sharing",tag:"GENEROSITY",image:"https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?auto=format&fit=crop&w=900&q=85",alt:"Child portrait",summary:"Learn to care for others and share thoughtfully.",paragraphs:["A student brought extra pencils to class and noticed a friend had forgotten one.","The student offered a pencil so the friend could complete the lesson. Both students were happy to continue learning together.","The student learned that generosity is not only about giving objects. It also includes sharing time, knowledge, and encouragement."],lesson:"Share when you can, and remember that generosity begins with a caring heart."},
-{id:"patience",title:"Learning to Be Patient",tag:"PATIENCE",image:"https://images.unsplash.com/photo-1502082553048-f009c37129b9?auto=format&fit=crop&w=900&q=85",alt:"A peaceful green tree",summary:"A gentle reminder to keep trying when learning is difficult.",paragraphs:["A learner found a new lesson difficult and wanted to give up. Instead, the learner took a short break and tried again slowly.","Each attempt helped the learner understand a little more. The learner also asked a teacher for help when needed.","The lesson became easier with practice. The learner discovered that progress can take time, and patience helps us keep going."],lesson:"Be patient with yourself, practise regularly, and ask for help when you need it."}
-];
-
-const materials=[
-{id:"material-letters",title:"Arabic Alphabet Practice",emoji:"🔤",desc:"Practise recognising Arabic letters.",body:"Read each letter aloud, listen to its sound, and practise writing it in a notebook. Review a few letters each day."},
-{id:"material-duas",title:"Daily Dua Revision",emoji:"🤲",desc:"Revise short everyday supplications.",body:"Read the Arabic carefully, listen to a reliable recitation, repeat slowly, and ask a qualified teacher to help with pronunciation."},
-{id:"material-manners",title:"Good Manners Checklist",emoji:"🌱",desc:"Build useful everyday habits.",body:"Practise greeting others politely, telling the truth, respecting parents and teachers, keeping surroundings clean, and helping others."}
-];
-
-const surahs=[
-{n:1,name:"Al-Fatiha"},{n:93,name:"Ad-Duha"},{n:94,name:"Ash-Sharh"},
-{n:103,name:"Al-Asr"},{n:105,name:"Al-Fil"},{n:108,name:"Al-Kawthar"},
-{n:112,name:"Al-Ikhlas"},{n:113,name:"Al-Falaq"},{n:114,name:"An-Nas"}
-];
-
-const questions=[
-{q:"In which language was the Quran revealed?",options:["Arabic","English","Malayalam"],answer:0,why:"The Quran was revealed in Arabic."},
-{q:"What does Bismillah mean?",options:["Good morning","In the name of Allah","Thank you"],answer:1,why:"Bismillah means 'In the name of Allah.'"},
-{q:"How many Arabic letters are commonly taught in the alphabet?",options:["18","24","28"],answer:2,why:"The Arabic alphabet is commonly taught as 28 letters."},
-{q:"Which phrase expresses gratitude to Allah?",options:["Alhamdulillah","Bismillah","Assalamu Alaikum"],answer:0,why:"Alhamdulillah means all praise belongs to Allah."}
-];
-
-const i18n={
-en:{dashboard:"Dashboard",quran:"Quran",letters:"Arabic Letters",duas:"Duas",stories:"Islamic Stories",materials:"Study Materials",quiz:"Quizzes",progress:"My Progress",teacher:"Teacher Space"},
-ml:{dashboard:"ഡാഷ്ബോർഡ്",quran:"ഖുർആൻ",letters:"അറബി അക്ഷരങ്ങൾ",duas:"ദുആകൾ",stories:"ഇസ്‌ലാമിക കഥകൾ",materials:"പഠനസാമഗ്രികൾ",quiz:"ക്വിസുകൾ",progress:"പുരോഗതി",teacher:"അധ്യാപക വിഭാഗം"},
-ar:{dashboard:"لوحة التعلم",quran:"القرآن",letters:"الحروف العربية",duas:"الأدعية",stories:"قصص إسلامية",materials:"مواد الدراسة",quiz:"الاختبارات",progress:"تقدمي",teacher:"مساحة المعلم"}
-};
-
-const modal=new bootstrap.Modal($("#lessonModal"));
-let activeLesson=null,quizIndex=0,answered={};
-
-function speak(text,lang="ar-SA"){
-  if(!("speechSynthesis" in window)){
-    alert("Sound playback is not supported in this browser. Try Chrome or Edge.");
-    return;
-  }
-  speechSynthesis.cancel();
-  const u=new SpeechSynthesisUtterance(text);
-  u.lang=lang;u.rate=.78;
-  speechSynthesis.speak(u);
+function askStudentName(edit=false){
+  $("#studentNameInput").value=edit?(state.name||""):"";
+  $("#studentNameTitle").textContent=edit?"Update your name":"Welcome to Noor Academy!";
+  nameModal.show();
+  setTimeout(()=>$("#studentNameInput").focus(),300);
 }
-function safe(s){return String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));}
+$("#studentNameForm").addEventListener("submit",e=>{
+  e.preventDefault();
+  const name=$("#studentNameInput").value.trim().slice(0,35);
+  if(!name)return;
+  state.name=name;save();updateName();nameModal.hide();
+});
+$("#editName").addEventListener("click",()=>askStudentName(true));
 
 function showPage(name){
   if(!$("#page-"+name))name="dashboard";
@@ -594,16 +355,12 @@ document.addEventListener("click",e=>{
   if(pageButton){e.preventDefault();showPage(pageButton.dataset.page);}
 });
 $("#menuToggle").addEventListener("click",()=>$("#sidebar").classList.toggle("open"));
-$("#editName").addEventListener("click",()=>{
-  const name=prompt("Enter the student name:",state.name);
-  if(name!==null&&name.trim()){
-    state.name=name.trim().slice(0,35);save();updateName();
-  }
-});
-function updateName(){
-  $("#studentName").textContent=state.name;
-  $("#welcomeName").textContent=state.name+"!";
-}
+
+const i18n={
+en:{dashboard:"Dashboard",quran:"Quran",letters:"Arabic Letters",duas:"Duas",stories:"Islamic Stories",materials:"Study Materials",quiz:"Quizzes",progress:"My Progress",teacher:"Teacher Space"},
+ml:{dashboard:"ഡാഷ്ബോർഡ്",quran:"ഖുർആൻ",letters:"അറബി അക്ഷരങ്ങൾ",duas:"ദുആകൾ",stories:"ഇസ്‌ലാമിക കഥകൾ",materials:"പഠനസാമഗ്രികൾ",quiz:"ക്വിസുകൾ",progress:"പുരോഗതി",teacher:"അധ്യാപക വിഭാഗം"},
+ar:{dashboard:"لوحة التعلم",quran:"القرآن",letters:"الحروف العربية",duas:"الأدعية",stories:"قصص إسلامية",materials:"مواد الدراسة",quiz:"الاختبارات",progress:"تقدمي",teacher:"مساحة المعلم"}
+};
 function setLanguage(lang){
   state.language=lang;save();
   document.documentElement.lang=lang;
@@ -621,25 +378,75 @@ function openModal(title,html,id=null){
   $("#modalTitle").textContent=title;
   $("#modalBody").innerHTML=html;
   $("#markLearned").style.display=id?"":"none";
-  modal.show();
+  lessonModal.show();
 }
 $("#markLearned").addEventListener("click",()=>{
   if(activeLesson&&!done(activeLesson))state.completed.push(activeLesson);
-  save();renderProgress();modal.hide();
+  save();renderProgress();lessonModal.hide();
 });
 
+function speak(text,lang="ar-SA"){
+  if(!("speechSynthesis" in window)){alert("Audio playback is not supported in this browser.");return;}
+  speechSynthesis.cancel();
+  const utterance=new SpeechSynthesisUtterance(text);
+  utterance.lang=lang;utterance.rate=.78;speechSynthesis.speak(utterance);
+}
+
+const letters=[
+["ا","Alif","Aa"],["ب","Ba","Ba"],["ت","Ta","Ta"],["ث","Tha","Tha"],
+["ج","Jim","Jim"],["ح","Ha","Ha"],["خ","Kha","Kha"],["د","Dal","Dal"],
+["ذ","Dhal","Dhal"],["ر","Ra","Ra"],["ز","Zay","Zay"],["س","Sin","Sin"],
+["ش","Shin","Shin"],["ص","Sad","Sad"],["ض","Dad","Dad"],["ط","Ta","Ta"],
+["ظ","Dha","Dha"],["ع","Ayn","Ayn"],["غ","Ghayn","Ghayn"],["ف","Fa","Fa"],
+["ق","Qaf","Qaf"],["ك","Kaf","Kaf"],["ل","Lam","Lam"],["م","Mim","Mim"],
+["ن","Nun","Nun"],["ه","Ha","Ha"],["و","Waw","Waw"],["ي","Ya","Ya"]
+];
+
+const duas=[
+{id:"dua-knowledge",title:"Dua for Knowledge",emoji:"📘",arabic:"رَبِّ زِدْنِي عِلْمًا",say:"Rabbi zidni ilma",meaning:"My Lord, increase me in knowledge.",ml:"എന്റെ രക്ഷിതാവേ, എനിക്ക് അറിവ് വർധിപ്പിച്ചുതരേണമേ."},
+{id:"dua-home",title:"Dua Before Entering Home",emoji:"🏡",arabic:"بِسْمِ اللَّهِ وَلَجْنَا، وَبِسْمِ اللَّهِ خَرَجْنَا، وَعَلَى اللَّهِ رَبِّنَا تَوَكَّلْنَا",say:"Bismillahi walajna, wa bismillahi kharajna, wa ala Allahi rabbina tawakkalna",meaning:"In the name of Allah we enter, in the name of Allah we leave, and upon our Lord Allah we rely.",ml:"അല്ലാഹുവിന്റെ നാമത്തിൽ ഞങ്ങൾ പ്രവേശിക്കുന്നു, അല്ലാഹുവിന്റെ നാമത്തിൽ പുറപ്പെടുന്നു; ഞങ്ങളുടെ രക്ഷിതാവായ അല്ലാഹുവിൽ ഞങ്ങൾ ഭരമേൽപ്പിക്കുന്നു."},
+{id:"dua-food",title:"Dua Before Eating",emoji:"🍽️",arabic:"بِسْمِ اللَّهِ",say:"Bismillah",meaning:"In the name of Allah.",ml:"അല്ലാഹുവിന്റെ നാമത്തിൽ."},
+{id:"dua-gratitude",title:"Expression of Gratitude",emoji:"💚",arabic:"الْحَمْدُ لِلَّهِ",say:"Alhamdulillah",meaning:"All praise belongs to Allah.",ml:"സർവസ്തുതിയും അല്ലാഹുവിനാകുന്നു."},
+{id:"dua-greeting",title:"Greeting of Peace",emoji:"🤝",arabic:"السَّلَامُ عَلَيْكُمْ",say:"Assalamu Alaikum",meaning:"Peace be upon you.",ml:"നിങ്ങൾക്ക് സമാധാനം ഉണ്ടാകട്ടെ."}
+];
+
+const stories=[
+{id:"kindness",title:"The Power of Kindness",tag:"KINDNESS",image:"https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?auto=format&fit=crop&w=900&q=85",alt:"Young child",summary:"Small acts of kindness can brighten someone's day.",paragraphs:["A young student noticed a classmate sitting alone. The student smiled, greeted the classmate, and invited them to join a game.","Later, the student helped a younger child pick up some books. Nobody asked them to help. They simply wanted to do something good.","That evening, the student remembered that kindness does not need to be big or expensive. A friendly word, a helping hand, and a sincere smile can mean a lot."],lesson:"Try one act of kindness today: help someone, share what you can, or speak gently."},
+{id:"honesty",title:"Always Tell the Truth",tag:"HONESTY",image:"https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?auto=format&fit=crop&w=900&q=85",alt:"A young child",summary:"A lesson about honesty, courage, and trust.",paragraphs:["A student accidentally damaged a classroom pencil. At first, the student felt worried about admitting what happened.","After thinking carefully, the student told the teacher the truth and apologised. The teacher appreciated the honesty and helped the student learn to be more careful.","The student discovered that telling the truth can take courage, but honesty helps people trust one another."],lesson:"Tell the truth, admit mistakes, and try to make things right."},
+{id:"gratitude",title:"A Heart Full of Gratitude",tag:"GRATITUDE",image:"https://images.unsplash.com/photo-1476231682828-37e571bc172f?auto=format&fit=crop&w=900&q=85",alt:"Sunlight through green trees",summary:"Notice the blessings and good things around you.",paragraphs:["A young learner began each day by thinking about the good things in life: family, food, friendship, and the chance to learn.","When something was difficult, the learner tried to remain patient and remember the good things that were still present.","Over time, the learner became more thoughtful and appreciative, and began saying Alhamdulillah more often."],lesson:"Think of three blessings today and thank Allah for them."},
+{id:"cleanliness",title:"Keep Your Surroundings Clean",tag:"GOOD HABITS",image:"https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=900&q=85",alt:"A student studying",summary:"Learn why caring for your surroundings matters.",paragraphs:["After a study session, a student noticed papers and pencils scattered across the desk.","Instead of leaving the mess for someone else, the student put the books away, collected the papers, and cleaned the desk.","The study space looked welcoming again. The student realised that small, regular habits can make a big difference."],lesson:"Keep your books, room, classroom, and shared spaces tidy."},
+{id:"sharing",title:"The Joy of Sharing",tag:"GENEROSITY",image:"https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?auto=format&fit=crop&w=900&q=85",alt:"Child portrait",summary:"Learn to care for others and share thoughtfully.",paragraphs:["A student brought extra pencils to class and noticed a friend had forgotten one.","The student offered a pencil so the friend could complete the lesson. Both students were happy to continue learning together.","The student learned that generosity is not only about giving objects. It also includes sharing time, knowledge, and encouragement."],lesson:"Share when you can, and remember that generosity begins with a caring heart."},
+{id:"patience",title:"Learning to Be Patient",tag:"PATIENCE",image:"https://images.unsplash.com/photo-1502082553048-f009c37129b9?auto=format&fit=crop&w=900&q=85",alt:"A peaceful green tree",summary:"A reminder to keep trying when learning is difficult.",paragraphs:["A learner found a new lesson difficult and wanted to give up. Instead, the learner took a short break and tried again slowly.","Each attempt helped the learner understand a little more. The learner also asked a teacher for help when needed.","The lesson became easier with practice. The learner discovered that progress can take time, and patience helps us keep going."],lesson:"Be patient with yourself, practise regularly, and ask for help when you need it."}
+];
+
+const materials=[
+{id:"material-letters",title:"Arabic Alphabet Practice",emoji:"🔤",desc:"Practise recognising Arabic letters.",body:"Read each letter aloud, listen to its sound, and practise writing it in a notebook. Review a few letters each day."},
+{id:"material-duas",title:"Daily Dua Revision",emoji:"🤲",desc:"Revise short everyday supplications.",body:"Read the Arabic carefully, listen to a reliable recitation, repeat slowly, and ask a qualified teacher to help with pronunciation."},
+{id:"material-manners",title:"Good Manners Checklist",emoji:"🌱",desc:"Build useful everyday habits.",body:"Practise greeting others politely, telling the truth, respecting parents and teachers, keeping surroundings clean, and helping others."},
+{id:"material-quran",title:"Quran Revision Routine",emoji:"📖",desc:"Build a steady Quran learning habit.",body:"Choose a manageable passage, listen to a trusted reciter, follow the Arabic text, repeat carefully, and review with a qualified teacher."}
+];
+
+const questions=[
+{q:"In which language was the Quran revealed?",options:["Arabic","English","Malayalam"],answer:0,why:"The Quran was revealed in Arabic."},
+{q:"What does Bismillah mean?",options:["Good morning","In the name of Allah","Thank you"],answer:1,why:"Bismillah means 'In the name of Allah.'"},
+{q:"How many Arabic letters are commonly taught in the alphabet?",options:["18","24","28"],answer:2,why:"The Arabic alphabet is commonly taught as 28 letters."},
+{q:"Which phrase expresses gratitude to Allah?",options:["Alhamdulillah","Bismillah","Assalamu Alaikum"],answer:0,why:"Alhamdulillah means all praise belongs to Allah."},
+{q:"Which surah opens the Quran?",options:["Al-Ikhlas","Al-Fatiha","An-Nas"],answer:1,why:"Surah Al-Fatiha is the opening surah of the Quran."},
+{q:"Which is a good learning habit?",options:["Never practise","Give up quickly","Practise regularly and ask for help"],answer:2,why:"Regular practice and asking a qualified teacher for help support learning."}
+];
+
 function renderLetters(){
-  $("#letterGrid").innerHTML=letters.map(([l,n],i)=>`<button class="letter-tile" lang="ar" aria-label="Learn letter ${n}" data-letter="${i}">${l}</button>`).join("");
+  $("#letterGrid").innerHTML=letters.map(([letter,name],i)=>`<button class="letter-tile" lang="ar" aria-label="Learn letter ${name}" data-letter="${i}">${letter}</button>`).join("");
   $$("[data-letter]").forEach(b=>b.addEventListener("click",()=>{
-    const [l,n,s]=letters[+b.dataset.letter];
-    openModal("Arabic Letter: "+n,`
-      <div class="modal-letter" lang="ar">${l}</div>
-      <h5 class="text-center fw-bold">${n}</h5>
-      <div class="modal-info"><small>Pronunciation guide</small><strong>${s}</strong></div>
-      <p class="small text-secondary">The sound of a letter can change with its position in a word. This voice is a practice aid, not a substitute for correct Arabic instruction.</p>
+    const [letter,name,sound]=letters[+b.dataset.letter];
+    openModal("Arabic Letter: "+name,`
+      <div class="modal-letter" lang="ar">${letter}</div>
+      <h5 class="text-center fw-bold">${name}</h5>
+      <div class="modal-info"><small>Pronunciation guide</small><strong>${sound}</strong></div>
+      <p class="small text-secondary">This voice is a practice aid, not a substitute for correct Arabic instruction.</p>
       <button class="btn btn-success w-100" id="letterSound"><i class="bi bi-volume-up"></i> Listen to letter</button>`,
-      "letter-"+l);
-    $("#letterSound").addEventListener("click",()=>speak(l));
+      "letter-"+letter);
+    $("#letterSound").addEventListener("click",()=>speak(letter));
   }));
 }
 
@@ -665,8 +472,7 @@ function renderStories(){
   $("#storyGrid").innerHTML=stories.map(s=>`
     <article class="story-card">
       <img class="story-cover" src="${s.image}" alt="${safe(s.alt)}" loading="lazy">
-      <div class="story-body">
-        <span class="story-tag">${s.tag}</span>
+      <div class="story-body"><span class="story-tag">${s.tag}</span>
         <h3>${s.title}</h3><p>${s.summary}</p>
         <button class="btn btn-success w-100" data-story="${s.id}">Read Story <i class="bi bi-arrow-right"></i></button>
       </div>
@@ -674,12 +480,10 @@ function renderStories(){
   $$("[data-story]").forEach(b=>b.addEventListener("click",()=>openStory(b.dataset.story)));
 }
 function openStory(id){
-  const s=stories.find(x=>x.id===id);
-  if(!s)return;
+  const s=stories.find(x=>x.id===id);if(!s)return;
   $("#storyReader").innerHTML=`
     <img src="${s.image}" alt="${safe(s.alt)}">
-    <span class="story-tag">${s.tag}</span>
-    <h2 class="mt-3">${s.title}</h2>
+    <span class="story-tag">${s.tag}</span><h2 class="mt-3">${s.title}</h2>
     <p class="text-secondary">${s.summary}</p>
     ${s.paragraphs.map(p=>`<p>${p}</p>`).join("")}
     <div class="lesson-point"><strong>🌟 What we learned</strong><p class="mb-0 mt-2">${s.lesson}</p></div>
@@ -687,15 +491,10 @@ function openStory(id){
     <button class="btn btn-outline-success ms-2" id="nextStory">Next story →</button>`;
   showPage("story-reader");
   $("#storyComplete").addEventListener("click",()=>{
-    if(!done("story-"+s.id))state.completed.push("story-"+s.id);
-    save();renderProgress();$("#storyComplete").textContent="Story completed ✓";
+    complete("story-"+s.id);$("#storyComplete").textContent="Story completed ✓";
   });
-  $("#nextStory").addEventListener("click",()=>{
-    const index=stories.findIndex(x=>x.id===id);
-    openStory(stories[(index+1)%stories.length].id);
-  });
+  $("#nextStory").addEventListener("click",()=>openStory(stories[(stories.findIndex(x=>x.id===id)+1)%stories.length].id));
 }
-$$; // harmless expression
 $("#backToStories").addEventListener("click",()=>showPage("stories"));
 
 function renderMaterials(){
@@ -707,28 +506,121 @@ function renderMaterials(){
   }));
 }
 
-async function loadSurah(n,name){
-  openModal(name,`<div class="text-center py-3"><div class="spinner-border text-success"></div><p class="mt-2">Loading Quran text and recitation...</p></div>`,"surah-"+n);
+/* Quran: load all 114 surah names from the Quran API. */
+async function loadSurahList(){
+  $("#quranLoading").textContent="Loading all 114 surahs…";
   try{
-    const r=await fetch(`https://api.alquran.cloud/v1/surah/${n}/ar.alafasy`);
-    if(!r.ok)throw new Error("Network error");
-    const j=await r.json();
-    if(j.code!==200||!j.data)throw new Error("No data");
-    const d=j.data;
+    const response=await fetch("https://api.alquran.cloud/v1/surah");
+    if(!response.ok)throw new Error("Unable to fetch surahs");
+    const json=await response.json();
+    if(json.code!==200||!Array.isArray(json.data))throw new Error("Invalid Quran data");
+    surahs=json.data.map(s=>({n:s.number,name:s.englishName,arabicName:s.name,englishNameTranslation:s.englishNameTranslation,numberOfAyahs:s.numberOfAyahs,revelationType:s.revelationType}));
+    $("#quranLoading").textContent="All 114 surahs are ready.";
+    renderQuran();
+  }catch(error){
+    $("#quranLoading").textContent="Could not load the online surah list. Check your internet connection and retry.";
+    $("#quranLoading").innerHTML+=' <button class="btn btn-sm btn-outline-success" id="retrySurahList">Retry</button>';
+    $("#retrySurahList").addEventListener("click",loadSurahList);
+  }
+}
+$("#surahSearch").addEventListener("input",renderQuran);
+$("#surahSort").addEventListener("change",renderQuran);
+
+function renderQuran(){
+  const search=($("#surahSearch").value||"").trim().toLowerCase();
+  const sorted=[...surahs].sort((a,b)=>$("#surahSort").value==="name"?a.name.localeCompare(b.name):a.n-b.n);
+  const filtered=sorted.filter(s=>String(s.n).includes(search)||s.name.toLowerCase().includes(search)||s.arabicName.includes(search));
+  $("#quranList").innerHTML=filtered.map(s=>`
+    <div class="lesson-row">
+      <span class="emoji">📖</span>
+      <div><h3>${s.n}. ${safe(s.name)}</h3><p>${safe(s.arabicName)} · ${s.numberOfAyahs} ayahs · ${done("surah-"+s.n)?"Studied ✓":s.revelationType||"Quran lesson"}</p></div>
+      <button data-surah="${s.n}" data-name="${safe(s.name)}">Open</button>
+    </div>`).join("")||'<p class="text-secondary">No surahs match your search.</p>';
+  $$("[data-surah]").forEach(b=>b.addEventListener("click",()=>loadSurah(+b.dataset.surah,b.dataset.name)));
+}
+
+/* Stops any current playback before another audio session starts. */
+function stopRecitation(){
+  audioRun++;
+  if(audioPlayer){audioPlayer.pause();audioPlayer.removeAttribute("src");audioPlayer.load();audioPlayer=null;}
+}
+async function loadSurah(n,name){
+  stopRecitation();
+  const thisRun=audioRun;
+  openModal(name,`<div class="text-center py-4"><div class="spinner-border text-success"></div><p class="mt-3">Loading Quran text and recitation…</p></div>`,"surah-"+n);
+  try{
+    const response=await fetch(`https://api.alquran.cloud/v1/surah/${n}/ar.alafasy`);
+    if(!response.ok)throw new Error("Network error");
+    const json=await response.json();
+    if(json.code!==200||!json.data||!json.data.ayahs)throw new Error("Quran data unavailable");
+    if(thisRun!==audioRun)return;
+    const d=json.data;
     $("#modalBody").innerHTML=`
-      <p class="text-secondary small">${d.englishName||name} · ${d.numberOfAyahs} verses</p>
-      <div class="modal-arabic" lang="ar">${d.ayahs.map(a=>a.text).join(" ۞ ")}</div>
-      <audio class="w-100 mt-3" controls preload="none" src="${d.ayahs[0]?.audio||""}">Audio playback is not supported.</audio>
-      <p class="small text-secondary mt-3">Practise recitation with a qualified Quran teacher when possible.</p>`;
-  }catch(e){
-    $("#modalBody").innerHTML=`<div class="text-center"><div class="display-4">📶</div><h5>Could not load the Quran</h5><p>Please check your internet connection and try again.</p><button class="btn btn-success" id="retrySurah">Try again</button></div>`;
+      <div class="d-flex flex-wrap align-items-center justify-content-between gap-2 mb-3">
+        <div><h5 class="fw-bold mb-1">${safe(d.englishName||name)}</h5><div class="small text-secondary">${safe(d.englishNameTranslation||"Quran")} · ${d.numberOfAyahs} ayahs · ${safe(d.revelationType||"")}</div></div>
+        <div class="text-end"><div class="modal-arabic">${safe(d.name)}</div><div class="small text-secondary">Surah ${d.number}</div></div>
+      </div>
+      <div class="d-flex flex-wrap gap-2 mb-3">
+        <button class="btn btn-success" id="playFullSurah"><i class="bi bi-play-fill"></i> Play Full Surah</button>
+        <button class="btn btn-outline-secondary" id="stopSurah"><i class="bi bi-stop-fill"></i> Stop</button>
+      </div>
+      <div class="alert alert-light small" id="audioStatus" role="status">Ready to recite. Select an ayah or play the full surah.</div>
+      <div id="ayahList"></div>
+      <p class="small text-secondary mt-3">Audio is streamed online. Listen and follow the Arabic text; ask a qualified Quran teacher to help with pronunciation and tajweed.</p>`;
+    $("#ayahList").innerHTML=d.ayahs.map((a,i)=>`
+      <article class="ayah-row" id="ayah-${i}">
+        <div class="d-flex justify-content-between align-items-center small text-secondary"><span>Ayah ${a.numberInSurah}</span><span>${a.juz?"Juz "+a.juz:""}</span></div>
+        <div class="ayah-text" lang="ar">${safe(a.text)}</div>
+        <div class="ayah-actions">
+          <span class="small text-secondary">${i+1} / ${d.ayahs.length}</span>
+          <button class="btn btn-sm btn-outline-success" data-play-ayah="${i}"><i class="bi bi-play-fill"></i> Play ayah</button>
+        </div>
+      </article>`).join("");
+    $("#playFullSurah").addEventListener("click",()=>playCompleteSurah(d.ayahs,name));
+    $("#stopSurah").addEventListener("click",()=>{
+      stopRecitation();
+      $("#audioStatus").textContent="Recitation stopped.";
+    });
+    $$("[data-play-ayah]").forEach(b=>b.addEventListener("click",()=>playSingleAyah(d.ayahs,+b.dataset.playAyah)));
+  }catch(error){
+    if(thisRun!==audioRun)return;
+    $("#modalBody").innerHTML=`<div class="text-center py-4"><div class="display-4">📶</div><h5>Could not load the Quran</h5><p>Check your internet connection and try again.</p><button class="btn btn-success" id="retrySurah">Try again</button></div>`;
     $("#retrySurah").addEventListener("click",()=>loadSurah(n,name));
   }
 }
-function renderQuran(){
-  $("#quranList").innerHTML=surahs.map(s=>`
-    <div class="lesson-row"><span class="emoji">📖</span><div><h3>${s.name}</h3><p>Surah ${s.n} · ${done("surah-"+s.n)?"Studied ✓":"Beginner practice"}</p></div><button data-surah="${s.n}" data-name="${s.name}">Open</button></div>`).join("");
-  $$("[data-surah]").forEach(b=>b.addEventListener("click",()=>loadSurah(+b.dataset.surah,b.dataset.name)));
+function playSingleAyah(ayahs,index){
+  stopRecitation();
+  const run=audioRun;
+  const ayah=ayahs[index];
+  if(!ayah||!ayah.audio){$("#audioStatus").textContent="Audio is not available for this ayah.";return;}
+  const status=$("#audioStatus");
+  if(!status)return;
+  status.textContent="Playing ayah "+ayah.numberInSurah+"…";
+  audioPlayer=new Audio(ayah.audio);
+  audioPlayer.onended=()=>{if(run===audioRun)status.textContent="Finished ayah "+ayah.numberInSurah+".";};
+  audioPlayer.onerror=()=>{if(run===audioRun)status.textContent="Could not play this audio. Check your internet connection.";};
+  audioPlayer.play().catch(()=>{if(run===audioRun)status.textContent="Playback was blocked. Press Play ayah again.";});
+}
+function playCompleteSurah(ayahs,name){
+  stopRecitation();
+  const run=audioRun;
+  const status=$("#audioStatus");
+  if(!status)return;
+  let index=0;
+  const playNext=()=>{
+    if(run!==audioRun)return;
+    if(index>=ayahs.length){status.textContent="Finished reciting "+name+".";complete("surah-"+ayahs[0].surahNumber);return;}
+    const ayah=ayahs[index];
+    if(!ayah.audio){index++;playNext();return;}
+    status.textContent="Playing "+name+" · Ayah "+ayah.numberInSurah+" of "+ayahs.length;
+    const row=$("#ayah-"+index);
+    if(row)row.scrollIntoView({behavior:"smooth",block:"nearest"});
+    audioPlayer=new Audio(ayah.audio);
+    audioPlayer.onended=()=>{if(run===audioRun){index++;playNext();}};
+    audioPlayer.onerror=()=>{if(run===audioRun){status.textContent="Audio error at ayah "+ayah.numberInSurah+". Skipping to the next ayah…";index++;playNext();}};
+    audioPlayer.play().catch(()=>{if(run===audioRun)status.textContent="Playback was blocked. Press Play Full Surah again.";});
+  };
+  playNext();
 }
 
 function renderQuiz(){
@@ -753,42 +645,41 @@ $("#nextQuiz").addEventListener("click",()=>{
 
 function renderProgress(){
   const counts={
-    quran:surahs.filter(s=>done("surah-"+s.n)).length,
+    quran:state.completed.filter(id=>id.startsWith("surah-")).length,
     letters:letters.filter(l=>done("letter-"+l[0])).length,
     duas:duas.filter(d=>done(d.id)).length,
     stories:stories.filter(s=>done("story-"+s.id)).length,
     materials:materials.filter(m=>done(m.id)).length,
     quiz:state.quizCompleted.length
   };
-  const totals={quran:surahs.length,letters:28,duas:duas.length,stories:stories.length,materials:materials.length,quiz:questions.length};
-  Object.entries(counts).forEach(([k,v])=>{
-    const c=$("#count-"+k),b=$("#bar-"+k);
-    if(c)c.textContent=`${v} / ${totals[k]} completed`;
-    if(b)b.style.width=`${Math.min(100,v/totals[k]*100)}%`;
+  const totals={quran:114,letters:28,duas:duas.length,stories:stories.length,materials:materials.length,quiz:questions.length};
+  Object.entries(counts).forEach(([key,value])=>{
+    const count=$("#count-"+key),bar=$("#bar-"+key);
+    if(count)count.textContent=`${value} / ${totals[key]} completed`;
+    if(bar)bar.style.width=`${Math.min(100,value/totals[key]*100)}%`;
   });
   const goal=Math.min(3,state.completed.length);
   $("#goalCount").textContent=`${goal} / 3`;
   $("#goalBar").style.width=`${goal/3*100}%`;
   $("#goalMessage").textContent=goal>=3?"Wonderful! You reached your demo goal!":"Complete "+(3-goal)+" more learning activities to reach your demo goal.";
-  $("#progressCards").innerHTML=Object.entries(counts).map(([k,v])=>`
+  $("#progressCards").innerHTML=Object.entries(counts).map(([key,value])=>`
     <div class="col-sm-6 col-lg-4"><div class="panel h-100">
-      <h3 class="fw-bold fs-6">${({quran:"📖 Quran",letters:"🔤 Arabic Letters",duas:"🤲 Duas",stories:"🕌 Islamic Stories",materials:"📚 Study Materials",quiz:"💡 Quizzes"})[k]}</h3>
-      <div class="d-flex justify-content-between small mt-3"><span>Completed</span><strong>${v}/${totals[k]}</strong></div>
-      <div class="progress-line"><span style="width:${v/totals[k]*100}%"></span></div>
+      <h3 class="fw-bold fs-6">${({quran:"📖 Quran",letters:"🔤 Arabic Letters",duas:"🤲 Duas",stories:"🕌 Islamic Stories",materials:"📚 Study Materials",quiz:"💡 Quizzes"})[key]}</h3>
+      <div class="d-flex justify-content-between small mt-3"><span>Completed</span><strong>${value}/${totals[key]}</strong></div>
+      <div class="progress-line"><span style="width:${Math.min(100,value/totals[key]*100)}%"></span></div>
     </div></div>`).join("");
 }
-
 function renderNotes(){
-  $("#savedNotes").innerHTML=state.notes.length?state.notes.map((n,i)=>`
-    <div class="panel"><p>${safe(n)}</p><button class="btn btn-sm btn-outline-danger" data-delete-note="${i}">Delete</button></div>`).join(""):'<p class="text-secondary">No saved notes yet.</p>';
+  $("#savedNotes").innerHTML=state.notes.length?state.notes.map((note,i)=>`
+    <div class="panel"><p>${safe(note)}</p><button class="btn btn-sm btn-outline-danger" data-delete-note="${i}">Delete</button></div>`).join(""):'<p class="text-secondary">No saved notes yet.</p>';
   $$("[data-delete-note]").forEach(b=>b.addEventListener("click",()=>{
     state.notes.splice(+b.dataset.deleteNote,1);save();renderNotes();
   }));
 }
 $("#saveNote").addEventListener("click",()=>{
-  const n=$("#teacherNote").value.trim();
-  if(!n)return alert("Please write a note first.");
-  state.notes.unshift(n.slice(0,1000));state.notes=state.notes.slice(0,20);
+  const note=$("#teacherNote").value.trim();
+  if(!note)return alert("Please write a note first.");
+  state.notes.unshift(note.slice(0,1000));state.notes=state.notes.slice(0,20);
   save();$("#teacherNote").value="";renderNotes();
 });
 $("#playDailyDua").addEventListener("click",()=>speak("رَبِّ زِدْنِي عِلْمًا"));
@@ -797,7 +688,7 @@ $("#resetProgress").addEventListener("click",()=>{
   state.completed=[];state.quizCompleted=[];save();renderProgress();renderQuiz();
 });
 
-// Initialise
+// Initialise the website
 $("#year").textContent=new Date().getFullYear();
 updateName();
 setLanguage(state.language||"en");
@@ -805,10 +696,15 @@ renderLetters();
 renderDuas();
 renderStories();
 renderMaterials();
-renderQuran();
 renderQuiz();
 renderProgress();
 renderNotes();
+loadSurahList();
+
+// Ask for the student's name only if it has not been saved before.
+if(!state.name||!state.name.trim()){
+  window.addEventListener("load",()=>setTimeout(()=>askStudentName(false),350),{once:true});
+}
 </script>
 </body>
 </html>
