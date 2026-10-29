@@ -1,0 +1,777 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#176b50">
+<title>Noor Academy | Islamic Education</title>
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=DM+Sans:wght@400;500;600;700;800&family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --green:#176b50;
+  --dark:#104b39;
+  --pale:#eaf5ed;
+  --cream:#faf8f1;
+  --gold:#d9ad50;
+  --ink:#263a30;
+  --muted:#78867d;
+  --line:#e7ece7;
+}
+*{box-sizing:border-box}
+body{margin:0;background:#f6f8f5;color:var(--ink);font-family:'Nunito',sans-serif}
+button{font-family:inherit}
+.arabic{font-family:'Amiri',serif;direction:rtl;line-height:1.9}
+.sidebar{position:fixed;inset:0 auto 0 0;width:250px;background:white;border-right:1px solid var(--line);padding:23px 16px;z-index:1050;overflow:auto;transition:.25s}
+.brand{display:flex;align-items:center;gap:11px;padding:0 9px 25px}
+.brand-logo{height:43px;width:43px;display:grid;place-items:center;border-radius:13px;background:var(--green);color:white;font-size:23px}
+.brand h5{font-weight:900;margin:0;font-size:19px}
+.brand small{font-size:11px;color:var(--muted)}
+.nav-label{font-size:10px;letter-spacing:1.5px;font-weight:900;color:#9ba69e;padding:17px 12px 7px}
+.nav-item-btn{width:100%;border:0;background:transparent;display:flex;align-items:center;gap:12px;text-align:left;padding:11px 13px;border-radius:11px;margin:2px 0;color:#66776c;font-size:13px;font-weight:800}
+.nav-item-btn i{font-size:18px;width:21px}
+.nav-item-btn:hover,.nav-item-btn.active{background:var(--pale);color:var(--green)}
+.sidebar-note{margin-top:25px;padding:17px 12px;border-radius:15px;text-align:center;background:var(--cream)}
+.sidebar-note .arabic{font-size:24px;color:var(--green)}
+.sidebar-note p{font-size:11px;color:var(--muted);margin:3px 0}
+.main{margin-left:250px;min-height:100vh}
+.topbar{height:75px;position:sticky;top:0;z-index:100;background:#ffffffed;backdrop-filter:blur(12px);border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;padding:0 30px;gap:12px}
+.topbar h6{margin:0;font-weight:900}
+.topbar small{color:var(--muted);font-size:11px}
+.page-wrap{max-width:1450px;padding:28px 30px 45px;margin:auto}
+.page{display:none;animation:fade .2s ease}
+.page.active{display:block}
+@keyframes fade{from{opacity:.4;transform:translateY(4px)}to{opacity:1;transform:translateY(0)}}
+.page-title{font-size:29px;font-weight:900;letter-spacing:-.7px;margin:3px 0 4px}
+.subtitle{font-size:13px;color:var(--muted)}
+.eyebrow{font-size:10px;font-weight:900;letter-spacing:1.6px;text-transform:uppercase;color:var(--green)}
+.section-heading{display:flex;justify-content:space-between;align-items:center;gap:10px;margin:26px 0 14px}
+.section-heading h5{font-size:17px;font-weight:900;margin:0}
+.section-heading button{border:0;background:transparent;color:var(--green);font-size:12px;font-weight:900}
+.card-clean{background:white;border:1px solid var(--line);border-radius:17px;padding:20px;height:100%}
+.btn-green{background:var(--green);border:1px solid var(--green);color:white;font-weight:800}
+.btn-green:hover{background:var(--dark);color:white}
+.btn-soft{background:var(--pale);border:1px solid #d6e9da;color:var(--green);font-weight:800}
+.btn-soft:hover{background:#d9eddf;color:var(--green)}
+.btn-gold{background:var(--gold);border:0;color:#24372d;font-weight:900}
+.stat-icon{width:43px;height:43px;border-radius:13px;display:grid;place-items:center;font-size:21px;margin-bottom:13px}
+.stat h3{font-weight:900;font-size:26px;margin:0}
+.stat p{font-size:11px;color:var(--muted);margin:3px 0 0}
+.dua-card{height:100%;background:white;border:1px solid var(--line);border-radius:16px;padding:19px;position:relative}
+.dua-card .arabic{font-size:26px;color:var(--green);margin:10px 0}
+.dua-card h6{font-size:13px;font-weight:900}
+.dua-card .translit{font-size:12px;color:#96772d;font-style:italic}
+.dua-card .meaning{font-size:12px;color:var(--muted);line-height:1.7}
+.source{font-size:10px;color:var(--muted)}
+.icon-box{width:48px;height:48px;display:grid;place-items:center;border-radius:14px;font-size:23px;flex-shrink:0}
+.module-card{background:white;border:1px solid var(--line);border-radius:16px;padding:19px;height:100%;transition:.2s}
+.module-card:hover{transform:translateY(-3px);box-shadow:0 10px 25px #193d2810}
+.module-card h6{font-weight:900;margin-top:14px}
+.module-card p{font-size:12px;color:var(--muted);min-height:35px}
+.progress{height:6px;background:#edf1ed}
+.progress-bar{background:var(--green)}
+.letter-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(85px,1fr));gap:10px}
+.letter-card{border:1px solid var(--line);background:white;border-radius:13px;text-align:center;padding:10px 4px;min-height:105px}
+.letter-card:hover,.letter-card.selected{background:var(--pale);border-color:var(--green)}
+.letter-card .arabic{font-size:38px;color:var(--green)}
+.letter-card strong{display:block;font-size:11px}
+.letter-card small{font-size:10px;color:var(--muted)}
+.lesson-row{display:flex;align-items:center;gap:13px;padding:14px 0;border-bottom:1px solid var(--line)}
+.lesson-row:last-child{border:0}
+.lesson-number{height:41px;width:41px;flex-shrink:0;border-radius:12px;background:var(--pale);color:var(--green);display:grid;place-items:center;font-weight:900}
+.lesson-row h6{font-size:13px;font-weight:900;margin:0 0 3px}
+.lesson-row small{font-size:11px;color:var(--muted)}
+.quiz-option{display:block;width:100%;text-align:left;border:1px solid var(--line);border-radius:11px;background:white;padding:12px 14px;margin:8px 0;font-weight:800}
+.quiz-option:hover{border-color:var(--green);background:var(--pale)}
+.quiz-option.correct{background:#e5f5e8;border-color:#198754}
+.quiz-option.wrong{background:#fff0f0;border-color:#dc3545}
+.form-label{font-size:12px;font-weight:900}
+.form-control,.form-select{border-color:#dfe7df;border-radius:10px;font-size:13px;padding:11px}
+.form-control:focus,.form-select:focus{border-color:var(--green);box-shadow:0 0 0 .2rem #176b5015}
+.notice{border-radius:12px;background:#fff6df;border:1px solid #f3e4bb;padding:13px;color:#775c1c;font-size:12px}
+.admin-tabs{display:flex;flex-wrap:wrap;gap:7px;margin:20px 0}
+.admin-tabs button{border:1px solid var(--line);background:white;padding:9px 13px;border-radius:10px;font-size:12px;font-weight:800}
+.admin-tabs button.active{background:var(--green);color:white;border-color:var(--green)}
+.admin-panel{display:none}
+.admin-panel.active{display:block}
+.profile-circle{height:37px;width:37px;border-radius:12px;background:#fff0d3;display:grid;place-items:center;font-size:19px}
+.mobile-menu{display:none}
+.overlay{display:none;position:fixed;inset:0;background:#10251d70;z-index:1040}
+.overlay.show{display:block}
+footer{text-align:center;color:var(--muted);font-size:11px;padding-top:28px}
+@media(max-width:991px){
+ .sidebar{transform:translateX(-105%)}
+ .sidebar.open{transform:translateX(0)}
+ .main{margin-left:0}
+ .mobile-menu{display:inline-flex}
+ .topbar{padding:0 17px}
+ .page-wrap{padding:22px 17px 35px}
+}
+@media(max-width:575px){
+ .page-title{font-size:25px}
+ .card-clean{padding:16px}
+ .dua-card{padding:15px}
+ .dua-card .arabic{font-size:23px}
+ .letter-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+}
+</style>
+</head>
+
+<body>
+<div class="overlay" id="overlay" onclick="toggleSidebar()"></div>
+
+<aside class="sidebar" id="sidebar">
+  <div class="brand">
+    <div class="brand-logo"><i class="bi bi-book-half"></i></div>
+    <div><h5>Noor Academy</h5><small>Islamic Education Portal</small></div>
+  </div>
+
+  <div class="nav-label">Student learning</div>
+  <button class="nav-item-btn active" data-page="home"><i class="bi bi-grid"></i> Dashboard</button>
+  <button class="nav-item-btn" data-page="letters"><i class="bi bi-alphabet"></i> Arabic Letters</button>
+  <button class="nav-item-btn" data-page="words"><i class="bi bi-card-text"></i> Arabic Vocabulary</button>
+  <button class="nav-item-btn" data-page="duas"><i class="bi bi-stars"></i> Daily Duas</button>
+  <button class="nav-item-btn" data-page="quran"><i class="bi bi-book"></i> Qur'an & Surahs</button>
+  <button class="nav-item-btn" data-page="tajweed"><i class="bi bi-soundwave"></i> Tajweed Basics</button>
+  <button class="nav-item-btn" data-page="aqeedah"><i class="bi bi-moon-stars"></i> Aqeedah</button>
+  <button class="nav-item-btn" data-page="fiqh"><i class="bi bi-journal-check"></i> Fiqh & Worship</button>
+  <button class="nav-item-btn" data-page="hadith"><i class="bi bi-chat-square-quote"></i> Hadith</button>
+  <button class="nav-item-btn" data-page="seerah"><i class="bi bi-bookmark-heart"></i> Seerah & Stories</button>
+  <button class="nav-item-btn" data-page="quiz"><i class="bi bi-patch-question"></i> Quizzes</button>
+
+  <div class="nav-label">My account</div>
+  <button class="nav-item-btn" data-page="progress"><i class="bi bi-graph-up"></i> My Progress</button>
+  <button class="nav-item-btn" data-page="notices"><i class="bi bi-megaphone"></i> Announcements</button>
+
+  <div class="nav-label">Administration</div>
+  <button class="nav-item-btn" data-page="admin"><i class="bi bi-person-workspace"></i> Teacher / Admin Space</button>
+
+  <div class="sidebar-note">
+    <div class="arabic">رَبِّ زِدْنِي عِلْمًا</div>
+    <p>My Lord, increase me in knowledge.</p>
+    <small class="text-secondary">Qur'an 20:114</small>
+  </div>
+</aside>
+
+<main class="main">
+  <header class="topbar">
+    <div class="d-flex align-items-center gap-3">
+      <button class="btn btn-light mobile-menu" onclick="toggleSidebar()" aria-label="Open menu"><i class="bi bi-list fs-4"></i></button>
+      <div><h6 id="topTitle">Student Dashboard</h6><small id="todayDate"></small></div>
+    </div>
+    <div class="d-flex align-items-center gap-2">
+      <div class="profile-circle"><i class="bi bi-person"></i></div>
+      <div class="d-none d-sm-block"><div class="fw-bold small">Student Portal</div><small class="text-secondary">Keep learning every day</small></div>
+    </div>
+  </header>
+
+  <div class="page-wrap">
+
+    <!-- DASHBOARD: DUAS FIRST, NO HERO -->
+    <section class="page active" id="page-home">
+      <div class="mb-4">
+        <div class="eyebrow">Bismillah · Begin with knowledge</div>
+        <h1 class="page-title">Assalamu Alaikum!</h1>
+        <p class="subtitle mb-0">Welcome to your learning space. What would you like to learn today?</p>
+      </div>
+
+      <div class="section-heading mt-0">
+        <h5><i class="bi bi-stars text-warning me-2"></i>Duas to remember</h5>
+        <button onclick="showPage('duas')">View all duas <i class="bi bi-arrow-right"></i></button>
+      </div>
+      <div class="row g-3" id="homeDuas"></div>
+
+      <div class="section-heading">
+        <h5>Continue your studies</h5>
+        <button onclick="showPage('progress')">My progress <i class="bi bi-arrow-right"></i></button>
+      </div>
+      <div class="row g-3">
+        <div class="col-6 col-xl-3"><div class="card-clean stat">
+          <div class="stat-icon" style="background:#e6f4e9;color:#176b50"><i class="bi bi-alphabet"></i></div>
+          <h3 id="statLetters">0/28</h3><p>Arabic letters learned</p>
+        </div></div>
+        <div class="col-6 col-xl-3"><div class="card-clean stat">
+          <div class="stat-icon" style="background:#fff0d3;color:#9a711b"><i class="bi bi-stars"></i></div>
+          <h3 id="statDuas">0</h3><p>Duas practised</p>
+        </div></div>
+        <div class="col-6 col-xl-3"><div class="card-clean stat">
+          <div class="stat-icon" style="background:#e9e8ff;color:#6655a9"><i class="bi bi-check2-circle"></i></div>
+          <h3 id="statQuiz">0</h3><p>Correct quiz answers</p>
+        </div></div>
+        <div class="col-6 col-xl-3"><div class="card-clean stat">
+          <div class="stat-icon" style="background:#e1f2f5;color:#28798c"><i class="bi bi-journal-bookmark"></i></div>
+          <h3 id="statCourses">0</h3><p>Extra courses added</p>
+        </div></div>
+      </div>
+
+      <div class="section-heading"><h5>Explore learning subjects</h5></div>
+      <div class="row g-3" id="subjectGrid"></div>
+
+      <div class="section-heading"><h5>Latest announcements</h5><button onclick="showPage('notices')">All announcements</button></div>
+      <div class="card-clean" id="homeNotices"></div>
+    </section>
+
+    <!-- LETTERS -->
+    <section class="page" id="page-letters">
+      <div class="eyebrow">Arabic foundation · Level 1</div>
+      <h2 class="page-title">Arabic Letters</h2>
+      <p class="subtitle">Choose a letter, learn its name and practise with your teacher.</p>
+      <div class="card-clean mb-4">
+        <div class="text-center small fw-bold text-secondary">SELECTED LETTER</div>
+        <div class="arabic text-center" style="font-size:70px;color:var(--green)" id="selectedLetter">ا</div>
+        <h4 class="text-center fw-bold" id="selectedName">Alif</h4>
+        <p class="text-center text-secondary small" id="selectedHint">The first letter of the Arabic alphabet.</p>
+        <div class="d-flex justify-content-center flex-wrap gap-2">
+          <button class="btn btn-soft rounded-pill" onclick="speakSelected()"><i class="bi bi-volume-up"></i> Listen</button>
+          <button class="btn btn-green rounded-pill" onclick="markLetter()">Mark as learned</button>
+        </div>
+        <p class="text-center small text-secondary mt-3 mb-0">Browser speech may not pronounce Arabic correctly. Use teacher-guided pronunciation practice.</p>
+      </div>
+      <div class="section-heading"><h5>Alphabet practice</h5><span class="small text-secondary" id="letterStatus"></span></div>
+      <div class="letter-grid" id="letterGrid"></div>
+    </section>
+
+    <!-- WORDS -->
+    <section class="page" id="page-words">
+      <div class="eyebrow">Arabic foundation · Vocabulary</div>
+      <h2 class="page-title">Arabic Vocabulary</h2>
+      <p class="subtitle">Learn everyday Arabic words with their meanings.</p>
+      <div class="row g-3">
+        <div class="col-lg-7"><div class="card-clean text-center py-5">
+          <span class="badge rounded-pill text-bg-light mb-3" id="wordNumber"></span>
+          <div class="arabic" style="font-size:56px;color:var(--green)" id="wordArabic"></div>
+          <h3 class="fw-bold mt-2" id="wordMeaning"></h3>
+          <p class="text-secondary" id="wordTranslit"></p>
+          <div class="d-flex justify-content-center gap-2 flex-wrap mt-3">
+            <button class="btn btn-outline-success rounded-pill" onclick="prevWord()">Previous</button>
+            <button class="btn btn-green rounded-pill" onclick="nextWord()">Next word <i class="bi bi-arrow-right"></i></button>
+            <button class="btn btn-soft rounded-pill" onclick="speakWord()"><i class="bi bi-volume-up"></i> Listen</button>
+          </div>
+        </div></div>
+        <div class="col-lg-5"><div class="card-clean">
+          <h5 class="fw-bold">How to practise</h5>
+          <div class="lesson-row"><div class="lesson-number">1</div><div><h6>Look</h6><small>Observe the Arabic letters.</small></div></div>
+          <div class="lesson-row"><div class="lesson-number">2</div><div><h6>Read</h6><small>Repeat the word slowly.</small></div></div>
+          <div class="lesson-row"><div class="lesson-number">3</div><div><h6>Remember</h6><small>Say the meaning without looking.</small></div></div>
+        </div></div>
+      </div>
+    </section>
+
+    <!-- DUAS -->
+    <section class="page" id="page-duas">
+      <div class="eyebrow">Daily worship · Memorisation</div>
+      <h2 class="page-title">Daily Duas</h2>
+      <p class="subtitle">Arabic text, transliteration, meaning and references.</p>
+      <div class="row g-3" id="allDuas"></div>
+    </section>
+
+    <!-- QURAN -->
+    <section class="page" id="page-quran">
+      <div class="eyebrow">Qur'an studies</div>
+      <h2 class="page-title">Qur'an & Short Surahs</h2>
+      <p class="subtitle">Learn in small steps and have your recitation checked by a qualified teacher.</p>
+      <div class="row g-3 mb-3">
+        <div class="col-md-6"><div class="card-clean">
+          <div class="icon-box mb-3" style="background:#e6f4e9;color:#176b50"><i class="bi bi-book"></i></div>
+          <h5 class="fw-bold">Surah Al-Ikhlas</h5><p class="text-secondary small">Chapter 112 · 4 verses</p>
+          <div class="arabic fs-3 text-center my-3">
+            <p>قُلْ هُوَ اللَّهُ أَحَدٌ</p>
+            <p>اللَّهُ الصَّمَدُ</p>
+            <p>لَمْ يَلِدْ وَلَمْ يُولَدْ</p>
+            <p>وَلَمْ يَكُن لَّهُ كُفُوًا أَحَدٌ</p>
+          </div>
+          <small class="text-secondary">Qur'an 112:1–4</small>
+        </div></div>
+        <div class="col-md-6"><div class="card-clean">
+          <h5 class="fw-bold mb-3">Suggested learning order</h5>
+          <div class="lesson-row"><div class="lesson-number">1</div><div><h6>Al-Fatihah</h6><small>Chapter 1 · 7 verses</small></div></div>
+          <div class="lesson-row"><div class="lesson-number">2</div><div><h6>Al-Ikhlas</h6><small>Chapter 112 · 4 verses</small></div></div>
+          <div class="lesson-row"><div class="lesson-number">3</div><div><h6>Al-Falaq</h6><small>Chapter 113 · 5 verses</small></div></div>
+          <div class="lesson-row"><div class="lesson-number">4</div><div><h6>An-Nas</h6><small>Chapter 114 · 6 verses</small></div></div>
+          <div class="lesson-row"><div class="lesson-number">5</div><div><h6>Al-Kawthar</h6><small>Chapter 108 · 3 verses</small></div></div>
+        </div></div>
+      </div>
+      <div class="notice">Qur'anic text is sacred material. Compare displayed text against a trusted Mushaf before publication. Add verified audio recitations in the production version.</div>
+    </section>
+
+    <!-- TAJWEED -->
+    <section class="page" id="page-tajweed">
+      <div class="eyebrow">Qur'an recitation</div><h2 class="page-title">Tajweed Basics</h2>
+      <p class="subtitle">A beginner's learning outline. Correct recitation requires listening to and practising with a qualified teacher.</p>
+      <div class="row g-3" id="tajweedGrid"></div>
+    </section>
+
+    <!-- AQEEDAH -->
+    <section class="page" id="page-aqeedah">
+      <div class="eyebrow">Islamic beliefs</div><h2 class="page-title">Aqeedah Foundations</h2>
+      <p class="subtitle">Organise foundational topics for guided Islamic learning.</p>
+      <div class="row g-3" id="aqeedahGrid"></div>
+    </section>
+
+    <!-- FIQH -->
+    <section class="page" id="page-fiqh">
+      <div class="eyebrow">Everyday worship</div><h2 class="page-title">Fiqh & Worship</h2>
+      <p class="subtitle">A study area for worship, cleanliness and daily practice. Add the rulings taught by your institution.</p>
+      <div class="row g-3" id="fiqhGrid"></div>
+    </section>
+
+    <!-- HADITH -->
+    <section class="page" id="page-hadith">
+      <div class="eyebrow">Prophetic teachings</div><h2 class="page-title">Hadith for Students</h2>
+      <p class="subtitle">Short teachings with source references and a practical reflection.</p>
+      <div class="row g-3">
+        <div class="col-lg-6"><div class="card-clean">
+          <span class="badge text-bg-light">Learning Qur'an</span>
+          <div class="arabic fs-3 my-3">خَيْرُكُمْ مَنْ تَعَلَّمَ الْقُرْآنَ وَعَلَّمَهُ</div>
+          <p>“The best of you are those who learn the Qur'an and teach it.”</p>
+          <small class="text-secondary">Sahih al-Bukhari 5027</small>
+          <hr><strong class="small">Practise:</strong><p class="small text-secondary mb-0">Revise a Qur'an lesson and help a fellow student learn when appropriate.</p>
+        </div></div>
+        <div class="col-lg-6"><div class="card-clean">
+          <span class="badge text-bg-light">Good character</span>
+          <div class="arabic fs-3 my-3">الدِّينُ النَّصِيحَةُ</div>
+          <p>“The religion is sincere advice.”</p>
+          <small class="text-secondary">Sahih Muslim 55</small>
+          <hr><strong class="small">Practise:</strong><p class="small text-secondary mb-0">Be sincere, speak kindly and offer advice with wisdom and respect.</p>
+        </div></div>
+      </div>
+      <div class="notice mt-3">Verify Arabic wording, translation, numbering and grading against a trusted Hadith edition before publishing or using in formal teaching.</div>
+    </section>
+
+    <!-- SEERAH / STORIES -->
+    <section class="page" id="page-seerah">
+      <div class="eyebrow">History & character</div><h2 class="page-title">Seerah & Islamic Stories</h2>
+      <p class="subtitle">Create age-appropriate lessons on the Prophet's life, Islamic history and good character.</p>
+      <div class="row g-3" id="storyGrid"></div>
+      <div class="notice mt-3">Story cards are learning topics or fictional examples unless explicitly labelled with a verified historical source. Check historical accounts before teaching them as facts.</div>
+    </section>
+
+    <!-- QUIZ -->
+    <section class="page" id="page-quiz">
+      <div class="eyebrow">Practice & revision</div><h2 class="page-title">Knowledge Check</h2>
+      <p class="subtitle">A short starter quiz. More subject-specific quizzes can be added later.</p>
+      <div class="card-clean">
+        <div class="d-flex justify-content-between align-items-center mb-3">
+          <span class="badge text-bg-light" id="quizPosition">Question 1 of 5</span><span class="small text-secondary" id="quizScore">Score: 0</span>
+        </div>
+        <div class="progress mb-4"><div class="progress-bar" id="quizBar" style="width:20%"></div></div>
+        <h5 class="fw-bold mb-3" id="quizQuestion"></h5>
+        <div id="quizOptions"></div>
+        <p class="small fw-bold mt-3" id="quizFeedback" aria-live="polite"></p>
+        <div class="d-flex gap-2 mt-3">
+          <button class="btn btn-outline-secondary rounded-pill" onclick="restartQuiz()">Restart</button>
+          <button class="btn btn-green rounded-pill" id="quizNext" onclick="nextQuestion()" disabled>Next</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROGRESS -->
+    <section class="page" id="page-progress">
+      <div class="eyebrow">Student record</div><h2 class="page-title">My Learning Progress</h2>
+      <p class="subtitle">Progress is saved in this browser. It is not shared with a teacher until a backend is added.</p>
+      <div class="row g-3 mb-3">
+        <div class="col-md-6"><div class="card-clean stat"><h5 class="fw-bold">Arabic Letters</h5><h3 id="progressLetterText">0 / 28</h3><div class="progress mt-3"><div class="progress-bar" id="progressLetterBar"></div></div></div></div>
+        <div class="col-md-6"><div class="card-clean stat"><h5 class="fw-bold">Daily Duas</h5><h3 id="progressDuaText">0</h3><div class="progress mt-3"><div class="progress-bar" id="progressDuaBar"></div></div></div></div>
+      </div>
+      <div class="card-clean">
+        <h5 class="fw-bold">Study routine</h5>
+        <div class="lesson-row"><div class="lesson-number">1</div><div><h6>Revise Arabic letters</h6><small>Practise the shape and sound of a few letters daily.</small></div></div>
+        <div class="lesson-row"><div class="lesson-number">2</div><div><h6>Memorise a dua</h6><small>Understand its meaning as well as the wording.</small></div></div>
+        <div class="lesson-row"><div class="lesson-number">3</div><div><h6>Review your lesson</h6><small>Ask your teacher to check your understanding and recitation.</small></div></div>
+        <button class="btn btn-outline-danger btn-sm rounded-pill mt-3" onclick="resetProgress()">Reset local progress</button>
+      </div>
+    </section>
+
+    <!-- ANNOUNCEMENTS -->
+    <section class="page" id="page-notices">
+      <div class="eyebrow">Updates from your institution</div><h2 class="page-title">Announcements</h2>
+      <p class="subtitle">Class reminders, exam dates and new course notices.</p>
+      <div class="card-clean" id="noticeList"></div>
+    </section>
+
+    <!-- TEACHER / ADMIN -->
+    <section class="page" id="page-admin">
+      <div class="eyebrow">Management workspace</div>
+      <h2 class="page-title">Teacher / Admin Space</h2>
+      <p class="subtitle">A place for you to prepare learning materials and organise the website.</p>
+      <div class="notice mb-3"><strong>Demo mode:</strong> Items added here are stored only in this browser. This is not a secure admin login and does not publish content to other students. Connect a backend and authentication before using real student data.</div>
+
+      <div class="row g-3 mb-3">
+        <div class="col-6 col-lg-3"><div class="card-clean stat"><div class="stat-icon" style="background:#e6f4e9;color:#176b50"><i class="bi bi-journal-plus"></i></div><h3 id="adminCourseCount">0</h3><p>Added courses</p></div></div>
+        <div class="col-6 col-lg-3"><div class="card-clean stat"><div class="stat-icon" style="background:#fff0d3;color:#967020"><i class="bi bi-file-earmark-text"></i></div><h3 id="adminLessonCount">0</h3><p>Added lessons</p></div></div>
+        <div class="col-6 col-lg-3"><div class="card-clean stat"><div class="stat-icon" style="background:#e9e8ff;color:#6555a8"><i class="bi bi-megaphone"></i></div><h3 id="adminNoticeCount">0</h3><p>Announcements</p></div></div>
+        <div class="col-6 col-lg-3"><div class="card-clean stat"><div class="stat-icon" style="background:#e1f2f5;color:#28798c"><i class="bi bi-person-check"></i></div><h3>—</h3><p>Student accounts</p></div></div>
+      </div>
+
+      <div class="admin-tabs">
+        <button class="active" data-admin="courses">Manage Courses</button>
+        <button data-admin="lessons">Add Lessons</button>
+        <button data-admin="announcements">Announcements</button>
+        <button data-admin="content">Content Library</button>
+      </div>
+
+      <div class="admin-panel active" id="admin-courses">
+        <div class="card-clean">
+          <h5 class="fw-bold mb-3">Create a course</h5>
+          <form id="courseForm">
+            <div class="row g-3">
+              <div class="col-md-6"><label class="form-label">Course title</label><input class="form-control" id="courseTitle" required placeholder="e.g. Beginner Arabic"></div>
+              <div class="col-md-6"><label class="form-label">Subject</label><select class="form-select" id="courseSubject"><option>Arabic</option><option>Qur'an</option><option>Tajweed</option><option>Aqeedah</option><option>Fiqh</option><option>Hadith</option><option>Seerah</option><option>Islamic Manners</option><option>Other</option></select></div>
+              <div class="col-md-6"><label class="form-label">Level</label><select class="form-select" id="courseLevel"><option>Beginner</option><option>Elementary</option><option>Intermediate</option><option>Advanced</option></select></div>
+              <div class="col-md-6"><label class="form-label">Teacher / author</label><input class="form-control" id="courseTeacher" placeholder="Your name"></div>
+              <div class="col-12"><label class="form-label">Course description</label><textarea class="form-control" id="courseDescription" rows="3" placeholder="What will students learn?"></textarea></div>
+            </div>
+            <button class="btn btn-green rounded-pill px-4 mt-3">Add course</button>
+          </form>
+          <hr><h6 class="fw-bold">Your courses</h6><div id="courseList"></div>
+        </div>
+      </div>
+
+      <div class="admin-panel" id="admin-lessons">
+        <div class="card-clean">
+          <h5 class="fw-bold mb-3">Create a lesson</h5>
+          <form id="lessonForm">
+            <div class="row g-3">
+              <div class="col-md-6"><label class="form-label">Lesson title</label><input class="form-control" id="lessonTitle" required placeholder="Lesson title"></div>
+              <div class="col-md-6"><label class="form-label">Subject</label><select class="form-select" id="lessonSubject"><option>Arabic</option><option>Qur'an</option><option>Tajweed</option><option>Aqeedah</option><option>Fiqh</option><option>Hadith</option><option>Seerah</option><option>Islamic Manners</option></select></div>
+              <div class="col-12"><label class="form-label">Lesson content</label><textarea class="form-control" id="lessonContent" rows="5" required placeholder="Write lesson notes, learning goals and practice activities..."></textarea></div>
+              <div class="col-12"><label class="form-label">Learning level</label><select class="form-select" id="lessonLevel"><option>Beginner</option><option>Elementary</option><option>Intermediate</option><option>Advanced</option></select></div>
+            </div>
+            <button class="btn btn-green rounded-pill px-4 mt-3">Save lesson</button>
+          </form>
+          <hr><h6 class="fw-bold">Your lessons</h6><div id="lessonList"></div>
+        </div>
+      </div>
+
+      <div class="admin-panel" id="admin-announcements">
+        <div class="card-clean">
+          <h5 class="fw-bold mb-3">Publish an announcement</h5>
+          <form id="noticeForm">
+            <div class="mb-3"><label class="form-label">Announcement title</label><input class="form-control" id="noticeTitle" required placeholder="e.g. Weekly revision"></div>
+            <div class="mb-3"><label class="form-label">Message</label><textarea class="form-control" id="noticeMessage" rows="4" required placeholder="Write the message for students..."></textarea></div>
+            <button class="btn btn-green rounded-pill px-4">Publish locally</button>
+          </form>
+          <hr><h6 class="fw-bold">Published announcements</h6><div id="adminNoticeList"></div>
+        </div>
+      </div>
+
+      <div class="admin-panel" id="admin-content">
+        <div class="card-clean">
+          <h5 class="fw-bold">Content library checklist</h5>
+          <p class="text-secondary small">Use this checklist when preparing lessons for the real platform.</p>
+          <div id="contentChecklist"></div>
+          <div class="notice mt-3">For religious content, use reliable sources and qualified review. Never publish unverified Qur'an text, Hadith wording, translations or rulings.</div>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div class="arabic fs-4 text-success">رَبِّ زِدْنِي عِلْمًا</div>
+      <p class="mt-2">Noor Academy · Islamic Education Portal</p>
+      <p>Educational website prototype · Verify religious content before publication.</p>
+    </footer>
+  </div>
+</main>
+
+<script>
+const titles={
+ home:"Student Dashboard",letters:"Arabic Letters",words:"Arabic Vocabulary",
+ duas:"Daily Duas",quran:"Qur'an & Short Surahs",tajweed:"Tajweed Basics",
+ aqeedah:"Aqeedah Foundations",fiqh:"Fiqh & Worship",hadith:"Hadith for Students",
+ seerah:"Seerah & Islamic Stories",quiz:"Knowledge Check",progress:"My Progress",
+ notices:"Announcements",admin:"Teacher / Admin Space"
+};
+
+function showPage(name){
+ document.querySelectorAll(".page").forEach(p=>p.classList.remove("active"));
+ document.getElementById("page-"+name)?.classList.add("active");
+ document.querySelectorAll(".nav-item-btn").forEach(b=>b.classList.toggle("active",b.dataset.page===name));
+ document.getElementById("topTitle").textContent=titles[name]||"Noor Academy";
+ document.getElementById("sidebar").classList.remove("open");
+ document.getElementById("overlay").classList.remove("show");
+ window.scrollTo({top:0,behavior:"smooth"});
+ if(name==="progress")renderProgress();
+ if(name==="admin")renderAdmin();
+}
+document.querySelectorAll(".nav-item-btn").forEach(b=>b.addEventListener("click",()=>showPage(b.dataset.page)));
+function toggleSidebar(){
+ document.getElementById("sidebar").classList.toggle("open");
+ document.getElementById("overlay").classList.toggle("show");
+}
+document.getElementById("todayDate").textContent=new Date().toLocaleDateString(undefined,{weekday:"long",month:"short",day:"numeric"});
+
+// Local browser storage
+const defaultState={learnedLetters:[],practisedDuas:[],quizCorrect:0,courses:[],lessons:[],notices:[]};
+function loadState(){
+ try{return {...defaultState,...JSON.parse(localStorage.getItem("noorAcademyV2")||"{}")}}
+ catch{return {...defaultState}}
+}
+let state=loadState();
+function saveState(){
+ try{localStorage.setItem("noorAcademyV2",JSON.stringify(state))}
+ catch{alert("Browser storage is unavailable. Your changes may not be saved.")}
+ updateStats();
+}
+function updateStats(){
+ document.getElementById("statLetters").textContent=state.learnedLetters.length+"/28";
+ document.getElementById("statDuas").textContent=state.practisedDuas.length;
+ document.getElementById("statQuiz").textContent=state.quizCorrect;
+ document.getElementById("statCourses").textContent=state.courses.length;
+ document.getElementById("adminCourseCount").textContent=state.courses.length;
+ document.getElementById("adminLessonCount").textContent=state.lessons.length;
+ document.getElementById("adminNoticeCount").textContent=state.notices.length;
+}
+
+// Dua library
+const duas=[
+ {title:"Dua for Knowledge",ar:"رَبِّ زِدْنِي عِلْمًا",trans:"Rabbi zidni 'ilma",meaning:"My Lord, increase me in knowledge.",ref:"Qur'an 20:114"},
+ {title:"Dua for Parents",ar:"رَبِّ ارْحَمْهُمَا كَمَا رَبَّيَانِي صَغِيرًا",trans:"Rabbir hamhuma kama rabbayani saghira",meaning:"My Lord, have mercy upon them as they brought me up when I was small.",ref:"Qur'an 17:24"},
+ {title:"Beginning in Allah's Name",ar:"بِسْمِ اللَّهِ",trans:"Bismillah",meaning:"In the name of Allah.",ref:"Commonly taught before eating; ask your teacher about the complete Sunnah wording."},
+ {title:"Seeking Protection",ar:"أَعُوذُ بِاللَّهِ مِنَ الشَّيْطَانِ الرَّجِيمِ",trans:"A'udhu billahi minash-shaytanir-rajim",meaning:"I seek Allah's protection from Satan, the rejected.",ref:"Qur'anic phrase; see Qur'an 16:98."},
+ {title:"Dua Before Learning",ar:"رَبِّ زِدْنِي عِلْمًا",trans:"Rabbi zidni 'ilma",meaning:"My Lord, increase me in knowledge.",ref:"Qur'an 20:114"},
+ {title:"Praise of Allah",ar:"الْحَمْدُ لِلَّهِ",trans:"Alhamdulillah",meaning:"All praise belongs to Allah.",ref:"A phrase of praise found throughout the Qur'an."}
+];
+function duaCard(d,i){
+ const done=state.practisedDuas.includes(i);
+ return `<div class="col-md-6 col-xl-4"><article class="dua-card">
+ <div class="d-flex justify-content-between align-items-start gap-2"><h6>${d.title}</h6><button class="btn btn-light btn-sm rounded-circle" onclick="speakArabic(${JSON.stringify(d.ar)})" aria-label="Listen"><i class="bi bi-volume-up text-success"></i></button></div>
+ <div class="arabic">${d.ar}</div><p class="translit">${d.trans}</p><p class="meaning">${d.meaning}</p>
+ <div class="source mb-3">${d.ref}</div>
+ <button class="btn btn-sm ${done?"btn-success":"btn-soft"} rounded-pill" onclick="markDua(${i})">${done?"✓ Practised":"Mark as practised"}</button>
+ </article></div>`;
+}
+function renderDuas(){
+ document.getElementById("homeDuas").innerHTML=duas.slice(0,3).map(duaCard).join("");
+ document.getElementById("allDuas").innerHTML=duas.map(duaCard).join("");
+}
+function markDua(i){if(!state.practisedDuas.includes(i))state.practisedDuas.push(i);saveState();renderDuas();renderProgress()}
+function speakArabic(text){
+ if(!("speechSynthesis" in window)){alert("Speech is not supported in this browser.");return}
+ speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(text);u.lang="ar";u.rate=.75;speechSynthesis.speak(u);
+}
+
+// Arabic letters
+const letters=[
+["ا","Alif"],["ب","Baa"],["ت","Taa"],["ث","Thaa"],["ج","Jeem"],["ح","Haa"],
+["خ","Khaa"],["د","Daal"],["ذ","Dhaal"],["ر","Raa"],["ز","Zaay"],["س","Seen"],
+["ش","Sheen"],["ص","Saad"],["ض","Daad"],["ط","Taa"],["ظ","Zhaa"],["ع","Ayn"],
+["غ","Ghayn"],["ف","Faa"],["ق","Qaaf"],["ك","Kaaf"],["ل","Laam"],["م","Meem"],
+["ن","Noon"],["ه","Haa"],["و","Waaw"],["ي","Yaa"]
+];
+let letterIndex=0;
+function renderLetters(){
+ document.getElementById("letterGrid").innerHTML=letters.map((l,i)=>`
+ <button class="letter-card ${i===letterIndex?"selected":""}" onclick="selectLetter(${i})">
+ <span class="arabic">${l[0]}</span><strong>${l[1]}</strong>
+ <small>${state.learnedLetters.includes(i)?"✓ Learned":"Tap to learn"}</small></button>`).join("");
+ document.getElementById("letterStatus").textContent=`${state.learnedLetters.length} of 28 learned`;
+}
+function selectLetter(i){
+ letterIndex=i;document.getElementById("selectedLetter").textContent=letters[i][0];
+ document.getElementById("selectedName").textContent=letters[i][1];
+ document.getElementById("selectedHint").textContent="Practise the letter's shape and sound with your teacher.";
+ renderLetters();
+}
+function markLetter(){
+ if(!state.learnedLetters.includes(letterIndex))state.learnedLetters.push(letterIndex);
+ saveState();renderLetters();
+}
+function speakSelected(){speakArabic(letters[letterIndex][0])}
+
+// Vocabulary
+const words=[
+ ["كِتَابٌ","Book","Kitābun"],["قَلَمٌ","Pen","Qalamun"],
+ ["بَيْتٌ","House","Baytun"],["مَاءٌ","Water","Mā'un"],
+ ["بَابٌ","Door","Bābun"],["مَسْجِدٌ","Mosque","Masjidun"],
+ ["مُعَلِّمٌ","Teacher","Mu'allimun"],["طَالِبٌ","Student","Tālibun"],
+ ["كِتَابَةٌ","Writing","Kitābatun"],["مَدْرَسَةٌ","School","Madrasatun"]
+];
+let wordIndex=0;
+function renderWord(){
+ const w=words[wordIndex];document.getElementById("wordNumber").textContent=`Word ${wordIndex+1} of ${words.length}`;
+ document.getElementById("wordArabic").textContent=w[0];document.getElementById("wordMeaning").textContent=w[1];document.getElementById("wordTranslit").textContent=w[2];
+}
+function nextWord(){wordIndex=(wordIndex+1)%words.length;renderWord()}
+function prevWord(){wordIndex=(wordIndex-1+words.length)%words.length;renderWord()}
+function speakWord(){speakArabic(words[wordIndex][0])}
+
+// Academic subject outlines
+const subjects=[
+ ["Arabic Letters","bi-alphabet","#e6f4e9","#176b50","Recognise letters, learn names and practise letter forms.","letters"],
+ ["Arabic Vocabulary","bi-card-text","#fff0d3","#9a711b","Build everyday words and beginner reading skills.","words"],
+ ["Qur'an & Surahs","bi-book","#e9e8ff","#6555a9","Learn short Surahs with guided recitation.","quran"],
+ ["Tajweed","bi-soundwave","#e1f2f5","#28798c","Study articulation points and basic recitation rules.","tajweed"],
+ ["Aqeedah","bi-moon-stars","#f8e8f6","#a44b91","Organise foundational beliefs into structured lessons.","aqeedah"],
+ ["Fiqh & Worship","bi-journal-check","#ffe8e2","#b85f4d","Study cleanliness, prayer and everyday worship.","fiqh"],
+ ["Hadith","bi-chat-square-quote","#e6f4e9","#176b50","Read short teachings with reliable references.","hadith"],
+ ["Seerah & Stories","bi-bookmark-heart","#fff0d3","#9a711b","Study the Prophet's life and lessons in good character.","seerah"],
+ ["Quizzes","bi-patch-question","#e9e8ff","#6555a9","Review topics and test your understanding.","quiz"]
+];
+function renderSubjects(){
+ document.getElementById("subjectGrid").innerHTML=subjects.map(s=>`
+ <div class="col-6 col-xl-4"><div class="module-card">
+ <div class="icon-box" style="background:${s[2]};color:${s[3]}"><i class="bi ${s[1]}"></i></div>
+ <h6>${s[0]}</h6><p>${s[4]}</p><button class="btn btn-soft btn-sm rounded-pill" onclick="showPage('${s[5]}')">Open subject <i class="bi bi-arrow-right"></i></button>
+ </div></div>`).join("");
+}
+function renderTopicCards(id,items){
+ document.getElementById(id).innerHTML=items.map((item,i)=>`
+ <div class="col-md-6 col-xl-4"><div class="module-card">
+ <div class="icon-box mb-3" style="background:var(--pale);color:var(--green)"><i class="bi bi-journal-text"></i></div>
+ <h6>${item[0]}</h6><p>${item[1]}</p>
+ <span class="badge text-bg-light">${item[2]||"Course outline"}</span>
+ </div></div>`).join("");
+}
+renderTopicCards("tajweedGrid",[
+ ["Arabic letter sounds","Learn the basic places and manners of articulation.","Beginner"],
+ ["Short vowels","Practise fathah, kasrah and dammah with a teacher.","Beginner"],
+ ["Sukoon and Shaddah","Recognise common reading signs.","Beginner"],
+ ["Madd","Introduction to lengthening sounds.","Elementary"],
+ ["Stopping signs","Learn to notice selected Mushaf signs.","Elementary"],
+ ["Guided recitation","Practise a short passage with teacher feedback.","Practice"]
+]);
+renderTopicCards("aqeedahGrid",[
+ ["Belief in Allah","Study Tawheed according to your institution's curriculum.","Beginner"],
+ ["Pillars of Iman","Learn the six pillars of faith.","Beginner"],
+ ["Prophets","Introduction to the prophets mentioned in Islamic teaching.","Beginner"],
+ ["Angels and revealed books","Study the foundational topics with reliable sources.","Elementary"],
+ ["The Hereafter","Introductory lessons on accountability and the Hereafter.","Elementary"],
+ ["Revision","Review and discuss questions with your teacher.","Practice"]
+]);
+renderTopicCards("fiqhGrid",[
+ ["Cleanliness","Study personal cleanliness and purification.","Beginner"],
+ ["Wudu","Learn the steps and rulings as taught in your curriculum.","Beginner"],
+ ["Prayer","Study the structure and requirements of Salah.","Beginner"],
+ ["Daily manners","Learn manners for home, school and the mosque.","Beginner"],
+ ["Fasting","Introduction to fasting and its purpose.","Elementary"],
+ ["Practice review","Use teacher-approved scenarios and exercises.","Practice"]
+]);
+renderTopicCards("storyGrid",[
+ ["The Prophet's early life","Prepare a sourced, age-appropriate Seerah lesson.","Seerah"],
+ ["Honesty","An original classroom example about telling the truth.","Character"],
+ ["Kindness to others","A short moral-reading activity for students.","Character"],
+ ["Respect for parents","Explore Qur'anic guidance on treating parents well.","Character"],
+ ["Keeping promises","Discuss trustworthiness using verified examples.","Character"],
+ ["Stories of the Prophets","Add teacher-reviewed accounts from reliable sources.","History"]
+]);
+
+// Quizzes
+const questions=[
+ {q:"Which letter is Alif?",o:["ا","ب","ت","ث"],a:0},
+ {q:"What does كِتَابٌ mean?",o:["House","Book","Water","Pen"],a:1},
+ {q:"Which phrase asks Allah for more knowledge?",o:["Bismillah","Alhamdulillah","Rabbi zidni ilma","Assalamu alaikum"],a:2},
+ {q:"How many verses are in Surah Al-Ikhlas?",o:["2","3","4","5"],a:2},
+ {q:"Which action shows good character?",o:["Mocking a friend","Helping a friend","Taking someone's things","Ignoring everyone"],a:1}
+];
+let qIndex=0,qScore=0,qAnswered=false;
+function renderQuiz(){
+ const q=questions[qIndex];qAnswered=false;
+ document.getElementById("quizPosition").textContent=`Question ${qIndex+1} of ${questions.length}`;
+ document.getElementById("quizScore").textContent=`Score: ${qScore}`;
+ document.getElementById("quizBar").style.width=((qIndex+1)/questions.length*100)+"%";
+ document.getElementById("quizQuestion").textContent=q.q;
+ document.getElementById("quizFeedback").textContent="";
+ document.getElementById("quizNext").disabled=true;
+ document.getElementById("quizNext").textContent=qIndex===questions.length-1?"Finish":"Next";
+ document.getElementById("quizOptions").innerHTML=q.o.map((o,i)=>`<button class="quiz-option" onclick="answerQuiz(${i})">${o}</button>`).join("");
+}
+function answerQuiz(i){
+ if(qAnswered)return;qAnswered=true;const q=questions[qIndex];
+ document.querySelectorAll(".quiz-option").forEach((b,j)=>{b.disabled=true;if(j===q.a)b.classList.add("correct");if(j===i&&i!==q.a)b.classList.add("wrong")});
+ const f=document.getElementById("quizFeedback");
+ if(i===q.a){qScore++;state.quizCorrect++;f.textContent="Correct! Well done.";f.style.color="#198754";saveState()}
+ else{f.textContent="Keep practising. The correct answer is highlighted.";f.style.color="#b85f4d"}
+ document.getElementById("quizScore").textContent=`Score: ${qScore}`;
+ document.getElementById("quizNext").disabled=false;
+}
+function nextQuestion(){
+ if(!qAnswered)return;
+ if(qIndex<questions.length-1){qIndex++;renderQuiz()}
+ else{
+ document.getElementById("quizQuestion").textContent=`You scored ${qScore} out of ${questions.length}.`;
+ document.getElementById("quizOptions").innerHTML="<p class='text-secondary small'>Review your lessons and try again.</p>";
+ document.getElementById("quizFeedback").textContent="Every lesson is a step forward.";
+ document.getElementById("quizNext").disabled=true;document.getElementById("quizNext").textContent="Completed";
+ }
+}
+function restartQuiz(){qIndex=0;qScore=0;renderQuiz()}
+
+// Progress
+function renderProgress(){
+ document.getElementById("progressLetterText").textContent=`${state.learnedLetters.length} / 28`;
+ document.getElementById("progressLetterBar").style.width=(state.learnedLetters.length/28*100)+"%";
+ document.getElementById("progressDuaText").textContent=`${state.practisedDuas.length} / ${duas.length}`;
+ document.getElementById("progressDuaBar").style.width=(state.practisedDuas.length/duas.length*100)+"%";
+}
+function resetProgress(){
+ if(!confirm("Reset your saved learning progress in this browser?"))return;
+ state.learnedLetters=[];state.practisedDuas=[];state.quizCorrect=0;saveState();renderLetters();renderDuas();renderProgress();
+}
+
+// Notices
+function renderNotices(){
+ const html=state.notices.length?state.notices.slice().reverse().map(n=>`
+ <div class="lesson-row"><div class="lesson-number"><i class="bi bi-megaphone"></i></div><div><h6>${escapeHTML(n.title)}</h6><small>${escapeHTML(n.message)}</small><div class="source mt-1">${escapeHTML(n.date)}</div></div></div>`).join(""):"<p class='empty-note mb-0'>No announcements yet. Teacher announcements will appear here.</p>";
+ document.getElementById("homeNotices").innerHTML=html;
+ document.getElementById("noticeList").innerHTML=html;
+ document.getElementById("adminNoticeList").innerHTML=state.notices.length?state.notices.slice().reverse().map((n,i)=>`
+ <div class="lesson-row"><div class="flex-grow-1"><h6>${escapeHTML(n.title)}</h6><small>${escapeHTML(n.message)}</small></div><button class="btn btn-outline-danger btn-sm" onclick="deleteNotice(${state.notices.length-1-i})"><i class="bi bi-trash"></i></button></div>`).join(""):"<p class='empty-note'>No announcements added.</p>";
+}
+function deleteNotice(i){state.notices.splice(i,1);saveState();renderNotices();renderAdmin()}
+document.getElementById("noticeForm").addEventListener("submit",e=>{
+ e.preventDefault();
+ state.notices.push({title:document.getElementById("noticeTitle").value.trim(),message:document.getElementById("noticeMessage").value.trim(),date:new Date().toLocaleDateString()});
+ saveState();e.target.reset();renderNotices();alert("Announcement saved in this browser.");
+});
+
+// Teacher workspace
+document.querySelectorAll("[data-admin]").forEach(b=>b.addEventListener("click",()=>{
+ document.querySelectorAll("[data-admin]").forEach(x=>x.classList.toggle("active",x===b));
+ document.querySelectorAll(".admin-panel").forEach(p=>p.classList.toggle("active",p.id==="admin-"+b.dataset.admin));
+}));
+document.getElementById("courseForm").addEventListener("submit",e=>{
+ e.preventDefault();
+ state.courses.push({
+ title:document.getElementById("courseTitle").value.trim(),
+ subject:document.getElementById("courseSubject").value,
+ level:document.getElementById("courseLevel").value,
+ teacher:document.getElementById("courseTeacher").value.trim(),
+ description:document.getElementById("courseDescription").value.trim()
+ });
+ saveState();e.target.reset();renderAdmin();alert("Course saved in this browser.");
+});
+document.getElementById("lessonForm").addEventListener("submit",e=>{
+ e.preventDefault();
+ state.lessons.push({
+ title:document.getElementById("lessonTitle").value.trim(),
+ subject:document.getElementById("lessonSubject").value,
+ level:document.getElementById("lessonLevel").value,
+ content:document.getElementById("lessonContent").value.trim()
+ });
+ saveState();e.target.reset();renderAdmin();alert("Lesson saved in this browser.");
+});
+function escapeHTML(value){
+ return String(value??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+}
+function renderAdmin(){
+ document.getElementById("courseList").innerHTML=state.courses.length?state.courses.map((c,i)=>`
+ <div class="lesson-row"><div class="lesson-number"><i class="bi bi-journal-bookmark"></i></div><div class="flex-grow-1"><h6>${escapeHTML(c.title)}</h6><small>${escapeHTML(c.subject)} · ${escapeHTML(c.level)}${c.teacher?" · "+escapeHTML(c.teacher):""}</small><p class="small text-secondary mb-0">${escapeHTML(c.description)}</p></div><button class="btn btn-outline-danger btn-sm" onclick="deleteCourse(${i})"><i class="bi bi-trash"></i></button></div>`).join(""):"<p class='empty-note'>No courses added yet.</p>";
+ document.getElementById("lessonList").innerHTML=state.lessons.length?state.lessons.map((l,i)=>`
+ <div class="lesson-row"><div class="lesson-number"><i class="bi bi-file-text"></i></div><div class="flex-grow-1"><h6>${escapeHTML(l.title)}</h6><small>${escapeHTML(l.subject)} · ${escapeHTML(l.level)}</small><p class="small text-secondary mb-0">${escapeHTML(l.content)}</p></div><button class="btn btn-outline-danger btn-sm" onclick="deleteLesson(${i})"><i class="bi bi-trash"></i></button></div>`).join(""):"<p class='empty-note'>No lessons added yet.</p>";
+ document.getElementById("contentChecklist").innerHTML=[
+ "Arabic letters and vocabulary","Duas with verified text and references","Qur'an text and approved recitation","Tajweed lessons reviewed by a teacher","Aqeedah and Fiqh course material","Hadith with verified sources","Seerah and historical references","Beginner and intermediate quizzes"
+ ].map(t=>`<label class="d-flex gap-2 align-items-center border-bottom py-3 small"><input type="checkbox"> ${t}</label>`).join("");
+ updateStats();renderNotices();
+}
+function deleteCourse(i){state.courses.splice(i,1);saveState();renderAdmin()}
+function deleteLesson(i){state.lessons.splice(i,1);saveState();renderAdmin()}
+
+// Start app
+renderDuas();renderLetters();selectLetter(0);renderWord();renderQuiz();renderSubjects();renderNotices();renderAdmin();updateStats();
+</script>
+</body>
+</html>
